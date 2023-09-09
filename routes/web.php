@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('tukar');
     return view('tukar 2');
     return view('tukar 3');
+    return view('tukar 4');
 });
