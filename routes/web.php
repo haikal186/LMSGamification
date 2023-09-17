@@ -15,8 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-    return view('tukar');
-    return view('tukar 2');
-    return view('tukar 3');
-    return view('tukar 4');
 });
