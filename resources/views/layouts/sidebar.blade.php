@@ -33,13 +33,14 @@
             <span class="nav-text">Dashboard</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="index.html">Dashboard Light</a></li>
-            <li><a href="index-2.html">Dashboard Dark</a></li>
+            {{-- <li><a href="index.html">Profile</a></li> --}}
+            <li><a href="{{ route('profile.index') }}">Profile</a></li>
+            {{-- <li><a href="index-2.html">Dashboard Dark</a></li>
             <li><a href="jobs-page.html">Jobs</a></li>
             <li><a href="application-page.html">Application</a></li>
             <li><a href="my-profile.html">Profile</a></li>
             <li><a href="statistics-page.html">Statistics</a></li>
-            <li><a href="compaines.html">Companies</a></li>	
+            <li><a href="compaines.html">Companies</a></li>	  --}}
         </ul>
 
     </li>
