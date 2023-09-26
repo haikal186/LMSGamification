@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('profile')->controller(ProfileController::class)->group(function () {
     Route::get('/', 'index')->name('profile.index');
+    Route::get('/create', 'create')->name('profile.create');
+    Route::post('/store', 'store')->name('profile.store');
 });
 
 
