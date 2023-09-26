@@ -30,11 +30,11 @@
 <ul class="metismenu" id="menu">
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
             <i class="flaticon-025-dashboard"></i>
-            <span class="nav-text">Dashboard</span>
+            <span class="nav-text">Profile</span>
         </a>
         <ul aria-expanded="false">
             {{-- <li><a href="index.html">Profile</a></li> --}}
-            <li><a href="{{ route('profile.index') }}">Profile</a></li>
+            <li><a href="{{ route('profile.index') }}">List Profile</a></li>
             {{-- <li><a href="index-2.html">Dashboard Dark</a></li>
             <li><a href="jobs-page.html">Jobs</a></li>
             <li><a href="application-page.html">Application</a></li>
