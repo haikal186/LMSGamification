@@ -66,7 +66,7 @@
                     <div class="row">
                         @foreach ($course as $key => $course)
                         <div class="col-xl-3 col-xxl-4 col-md-4 col-sm-6">
-                            <a href="{{ route('course.detail', $course->id) }}">
+                            <a href="{{ route('course.show', $course->id) }}">
                                 <div class="card">
                                     <div class="jobs2 card-body">
                                         <div class="text-center">
@@ -82,7 +82,7 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            <h4 class="fs-20 mb-0">{{ $course->title }}</h4>
+                                            <h4 class="fs-20 mb-0">{{ $course->name }}</h4>
                                             <span class="text-primary mb-3 d-block">Bubbles Studios</span>
                                         </div>
                                         <div>

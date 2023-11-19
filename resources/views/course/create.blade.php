@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-xl-6  col-md-6 mb-4">
                             <label  class="form-label font-w600">Course Name<span class="text-danger scale5 ms-2">*</span></label>
-                                <input type="text" name="title" class="form-control solid" placeholder="Course name" aria-label="name">
+                                <input type="text" name="name" class="form-control solid" placeholder="Course name" aria-label="name">
                             </div>
                             <div class="col-xl-12 mb-4">
                                 <label  class="form-label font-w600">Description:<span class="text-danger scale5 ms-2">*</span></label>

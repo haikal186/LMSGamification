@@ -6,7 +6,7 @@
         <div class="col-xl-12">
             <div class="profile-back">
                 <img src="images/profile1.jpg" alt="">
-                <form method="POST" action="{{ route('course.enroll', $course->id) }}">
+                <form method="POST" action="{{ route('enroll.create', $course->id) }}">
                     @csrf
                     <div class="social-btn">
                         <a href="javascript:void(0);" class="btn btn-light social">245 Following</a>
@@ -18,7 +18,7 @@
             <div class="profile-pic d-flex">
                 <img src="images/profile/pic1.jpg" alt="">
                 <div class="profile-info2">
-                    <h2 class="mb-0">{{ $course->title }}</h2>
+                    <h2 class="mb-0">{{ $course->name }}</h2>
                     <h4>Lecturer Name</h4>
                     <span class="d-block"><i class="fas fa-map-marker-alt me-2"></i>Medan, Sumatera Utara - ID</span>
                 </div>
@@ -84,12 +84,12 @@
                                         @foreach ($quizzes as $key => $quiz)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $quiz->title }}</td>
+                                            <td>{{ $quiz->name }}</td>
                                             <td class="wspace-no">35 students</td>
                                             <td>{{ $quiz->created_at }}</td>
                                             <td>
                                                 <div class="action-buttons d-flex">
-                                                    <a href="{{ route('course.question', ['id' => $course->id, 'quiz_id' => $quiz->id]) }}" class="btn btn-success light mr-2">
+                                                    <a href="{{ route('quiz.show', ['course_id' => $course->id, 'quiz_id' => $quiz->id]) }}" class="btn btn-success light mr-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
                                                     </a>
                                                     <a class="btn btn-secondary light mr-2">
@@ -214,13 +214,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="comment-form" method="POST" action="{{ route('course.createQuiz', $course->id) }}">
+                    <form class="comment-form" method="POST" action="{{ route('quiz.store', $course->id) }}">
                         @csrf
                         <div class="row"> 
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label class="text-black font-w600 form-label">Quiz Name <span class="required">*</span></label>
-                                    <input type="text" class="form-control" name="title" placeholder="Quiz name...">
+                                    <input type="text" class="form-control" name="name" placeholder="Quiz name...">
                                 </div>
                             </div>
                             <div class="col-lg-12">

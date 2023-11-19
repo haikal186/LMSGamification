@@ -17,10 +17,15 @@ class Quiz extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
+        'name',
         'description',
         'course_id',
     ];
+
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class);
+    }
 
     public function course()
     {

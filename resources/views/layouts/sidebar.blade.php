@@ -33,16 +33,9 @@
             <span class="nav-text">Profile</span>
         </a>
         <ul aria-expanded="false">
-            {{-- <li><a href="index.html">Profile</a></li> --}}
             <li><a href="{{ route('profile.index') }}">List Instructors</a></li>
             <li><a href="jobs-page.html">List Students</a></li>
             <li><a href="{{ route('profile.detail', ['id' => auth()->user()->id]) }}">Your Profile</a></li>
-            {{-- <li><a href="index-2.html">Dashboard Dark</a></li>
-            <li><a href="jobs-page.html">Jobs</a></li>
-            <li><a href="application-page.html">Application</a></li>
-            <li><a href="my-profile.html">Profile</a></li>
-            <li><a href="statistics-page.html">Statistics</a></li>
-            <li><a href="compaines.html">Companies</a></li>	  --}}
         </ul>
 
     </li>
@@ -53,59 +46,20 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('course.index') }}">Course Lists</a></li>
             <li><a href="{{ route('course.create') }}">Create Course</a></li>
-            <li><a href="{{ route('course.list') }}">Your Course</a></li>
-            <li><a href="apply-job.html">Course Overview</a></li>
+            <li><a href="{{ route('enroll.index') }}">Your Course</a></li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Add Content</a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('course.lesson') }}">Add Lesson</a></li>
-                    <li><a href="{{ route('course.quiz') }}">Add Quiz</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Course Content</a>
-                <ul aria-expanded="false">
-                    <li><a href="./email-compose.html">Chapter 1</a></li>
-                    <li><a href="./email-compose.html">Chapter 2</a></li>
-                    <li><a href="./email-compose.html">Chapter 3</a></li>
-                </ul>
-            </li>
-            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Course Assestment</a>
-                <ul aria-expanded="false">
-                    <li><a href="./email-compose.html">Quiz</a></li>
-                    <li><a href="./email-compose.html">Quiz Result</a></li>
-                </ul>
-            </li>
-            {{-- <li><a href="job-application.html">Job Application</a></li>
-            <li><a href="apply-job.html">Apply Job</a></li>
-            <li><a href="new-job.html">New Job</a></li>
-            <li><a href="user-profile.html">User Profile</a></li> --}}
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
         <i class="flaticon-050-info"></i>
-            <span class="nav-text">Assestment</span>
+            <span class="nav-text">Assesstment</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{ route('course.quizList') }}">Quiz</a></li>
-            {{-- <li><a href="./post-details.html">Post Details</a></li> --}}
-            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                <ul aria-expanded="false">
-                    <li><a href="./email-compose.html">Compose</a></li>
-                    <li><a href="./email-inbox.html">Inbox</a></li>
-                    <li><a href="./email-read.html">Read</a></li>
-                </ul>
-            </li> --}}
-            {{-- <li><a href="./app-calender.html">Calendar</a></li> --}}
-            {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-                <ul aria-expanded="false">
-                    <li><a href="./ecom-product-grid.html">Product Grid</a></li>
-                    <li><a href="./ecom-product-list.html">Product List</a></li>
-                    <li><a href="./ecom-product-detail.html">Product Details</a></li>
-                    <li><a href="./ecom-product-order.html">Order</a></li>
-                    <li><a href="./ecom-checkout.html">Checkout</a></li>
-                    <li><a href="./ecom-invoice.html">Invoice</a></li>
-                    <li><a href="./ecom-customers.html">Customers</a></li>
-                </ul>
-            </li> --}}
+            <li><a href="{{ route('quiz.index') }}">Quiz List</a></li>
         </ul>
     </li>
 </ul>

@@ -19,7 +19,7 @@
         </div>
         <div class="col-xl-8 col-xxl-6 col-lg-6 col-12 d-md-flex job-title-search pe-0">
             <div class="input-group search-area">
-                <input type="text" class="form-control h-auto" placeholder="search course title here...">
+                <input type="text" class="form-control h-auto" placeholder="search job title here...">
                 <span class="input-group-text">
                     <a href="javascript:void(0)" class="btn btn-primary btn-rounded">Search<i class="flaticon-381-search-2 ms-2"></i></a>
                 </span>
@@ -30,7 +30,7 @@
         <div class="col-xl-12">
             <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-4">
-                    <h5>Showing {{ $quizzes->count() }} of {{ $totalQuiz }} course results</h5>
+                    <h5>Showing {{ $courses->count() }} of {{ $totalCourse }} course results</h5>
                     <span>Based on your preferences</span>
                 </div>
                 <div class="d-flex mb-4">
@@ -59,9 +59,9 @@
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="Boxed" role="tabpanel">
                     <div class="row">
-                        @foreach ($quizzes as $quiz)
+                        @foreach ($courses as $key => $course)
                         <div class="col-xl-3 col-xxl-4 col-md-4 col-sm-6">
-                            <a href="{{ route('course.detail', $quiz->course_id) }}">
+                            <a href="{{ route('enroll.show', $course->id) }}">
                                 <div class="card">
                                     <div class="jobs2 card-body">
                                         <div class="text-center">
@@ -77,12 +77,8 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            <h4 class="fs-20 mb-0">{{ $quiz->title }}</h4>
-                                            @foreach ($courses as $course)
-                                                @if ($course->id === $quiz->course_id)
-                                                    <span class="text-primary mb-3 d-block">{{ $course->title }}</span>
-                                                @endif
-                                            @endforeach
+                                            <h4 class="fs-20 mb-0">{{ $course->title }}</h4>
+                                            <span class="text-primary mb-3 d-block">Bubbles Studios</span>
                                         </div>
                                         <div>
                                             <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Manchester, England</span>
@@ -96,7 +92,7 @@
                     </div>
                     <div class="d-flex justify-content-between mb-4"> <!-- Added this container -->
                         <div>
-                            <h5 class="mb-0">Showing {{ $quiz->count() }} of {{ $totalQuiz }} Data</h5>
+                            <h5 class="mb-0">Showing {{ $course->count() }} of {{ $totalCourse }} Data</h5>
                         </div>
                         <nav>
                             <ul class="pagination pagination-circle">

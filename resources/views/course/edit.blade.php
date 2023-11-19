@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="d-flex align-items-center mb-4">
-        <h4 class="fs-20 font-w600 mb-0 me-auto">{{ $course->title }}</h4>
+        <h4 class="fs-20 font-w600 mb-0 me-auto">{{ $course->name }}</h4>
         <div>
             <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
             <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
@@ -20,7 +20,7 @@
                         <div class="row mb-4">
                             <div class="col-xl-6 col-md-6">
                                 <label class="form-label font-w600">Course Name<span class="text-danger scale5 ms-2">*</span></label>
-                                <input type="text" class="form-control solid" name="title"  placeholder="Name" value="{{ $course->title }}" aria-label="name">
+                                <input type="text" class="form-control solid" name="name"  placeholder="Name" value="{{ $course->name }}" aria-label="name">
                             </div>
                         </div>
                         <div class="row mb-4">
@@ -41,7 +41,7 @@
                     </div>
                     <div class="card-footer text-end">
                         <div>
-                            <a href="{{ route('course.detail', $course->id) }}" class="btn btn-primary me-3">Back</a>
+                            <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary me-3">Back</a>
                             <button type="submit" class="btn btn-secondary">Submit</button>
                         </div>
                     </div>
