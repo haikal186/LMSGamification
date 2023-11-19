@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-                <form method="POST" action="{{ route('question.store') }}">
+                <form method="POST" action="{{ route('question.store', ['quiz_id' => $quiz_id]) }}">
                     @csrf
                     <div class="card-body">
                         <div class="row">
