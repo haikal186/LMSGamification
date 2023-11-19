@@ -9,7 +9,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('profile.index');
+        $users = User::all();
+
+        return view('profile.index', compact('users'));
     }
 
     public function create()
@@ -26,5 +28,26 @@ class ProfileController extends Controller
         ]);
 
         return to_route('profile.index');
+    }
+
+    public function show(string $id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('profile.show',compact('user'));
+    }
+
+    public function destroy(string $id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        
+        return redirect()->route('profile.index')->with('success', 'User deleted successfully');
+    }
+
+    public function detail($id)
+    {
+        $user = User::findOrFail($id);
+        return view('profile.detail', compact('user'));
     }
 }
