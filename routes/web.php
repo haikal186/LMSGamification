@@ -45,7 +45,7 @@ Route::prefix('course')->controller(CourseController::class)->group(function(){
     Route::get('/edit/{id}','edit')->name('course.edit');
     Route::put('/update/{id}', 'update')->name('course.update');
     Route::get('/lesson', 'lesson')->name('course.lesson');
-    
+
 });
 
 Route::prefix('quiz')->controller(QuizController::class)->group(function () {
@@ -59,8 +59,8 @@ Route::prefix('quiz')->controller(QuizController::class)->group(function () {
 
 Route::prefix('question')->controller(QuestionController::class)->group(function () {
 
-    Route::get('/create/{id}', 'create')->name('question.create');
-    Route::get('/store/{quiz_id}', 'store')->name('question.store');
+    Route::get('/create/{quiz_id}', 'create')->name('question.create');
+    Route::post('/store/{quiz_id}', 'store')->name('question.store');
 
 });
 

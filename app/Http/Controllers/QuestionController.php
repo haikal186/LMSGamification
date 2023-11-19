@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Redirect;
 
 class QuestionController extends Controller
 {
-    public function create()
+    public function create($quiz_id)
     {  
-        return view('question.create');
+        return view('question.create', compact('quiz_id'));
     }
 
     public function store(Request $request, $quiz_id)
