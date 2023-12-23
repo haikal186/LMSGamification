@@ -93,21 +93,23 @@
                         <h5 class="card-title">Question {{ $question->id }}</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Q: {{ $question->name }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="card-footer-link mb-4 mb-sm-0">
-                            <p class="card-text text-dark d-inline">Answer Choice:</p>
-                            <div class="basic-form mt-4">
-                                <div class="col-xl-4 col-xxl-6 col-6">
+                        <div class="mb-6">
+                            <div class="card-text"><b>Q: {{ $question->name }}</b></div>
+                            <br>
+                            <div class="card-text mt-6">Answer Choice:</div>
+                            <div class="basic-form mt-2">
+                                <div class="col-xl-6 col-sm-6">
                                     @foreach ($question->answers as $answer)
                                         <div class="radio">
-                                            <label><input type="radio" name="optradio"> {{ $answer->name }}</label>
+                                            <input type="radio" name="optradio"> {{ $answer->name }}
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary me-3 btn-sm">Button</a>
                     </div>
                 </div>
             </div>
