@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Enroll;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Course extends Model
 {
@@ -22,5 +23,11 @@ class Course extends Model
     public function quizzes()
     {
         return $this->hasMany(Quiz::class);
+    }
+
+    public function enrolls()
+    {
+        return $this->hasMany(Enroll::class);
+
     }
 }

@@ -585,7 +585,7 @@
         ***********************************-->
         <div class="header">
             <div class="header-content">
-                @include('layouts.navbar')
+                @include('layouts.question.navbar')
 			</div>
 		</div>
         <!--**********************************
@@ -597,7 +597,7 @@
         ***********************************-->
         <div class="dlabnav">
             <div class="dlabnav-scroll">
-				@include('layouts.sidebar')
+				@include('layouts.question.sidebar')
 			</div>
         </div>
         <!--**********************************

@@ -45,7 +45,9 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('course.index') }}">Course Lists</a></li>
+            {{-- @if(auth()->user()->hasRole->name == 'lecturer') --}}
             <li><a href="{{ route('course.create') }}">Create Course</a></li>
+            {{-- @endif --}}
             <li><a href="{{ route('enroll.index') }}">Your Course</a></li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Add Content</a>
                 <ul aria-expanded="false">
@@ -62,6 +64,18 @@
             <li><a href="{{ route('quiz.index') }}">Quiz List</a></li>
         </ul>
     </li>
+    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+        <i class="flaticon-022-copy"></i>
+        <span class="nav-text">Overview</span>
+    </a>
+    <ul aria-expanded="false">
+        <li><a href="./form-element.html">Course Overview</a></li>
+        <li><a href="{{ route('achievement.index') }}">Achievement</a></li>
+        <li><a href="./form-ckeditor.html">CkEditor</a></li>
+        <li><a href="form-pickers.html">Pickers</a></li>
+        <li><a href="form-validation.html">Form Validate</a></li>
+    </ul>
+</li>
 </ul>
 <div class="plus-box">
     <p class="fs-14 font-w600 mb-2">Let Jobick Managed<br>Your Resume Easily<br></p>

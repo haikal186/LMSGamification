@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('score')->nullable();
+            $table->date('date_completed')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('quiz_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('achievement_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -2,20 +2,24 @@
 
 namespace App\Models;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Model;
 
 class Enroll extends Model
 {
-    protected $table = 'enrollments'; // Specify the correct table name
-    protected $fillable = ['user_id', 'course_id', 'enroll_date'];
+    protected $table = 'enrollments'; 
 
-    // Define the relationship with the User model
+    protected $fillable = [
+        'user_id', 
+        'course_id', 
+        'enroll_date'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Define the relationship with the Course model
     public function course()
     {
         return $this->belongsTo(Course::class);

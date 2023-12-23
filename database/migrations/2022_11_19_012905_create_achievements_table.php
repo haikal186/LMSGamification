@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
-            $table->string('name')->nullable();
-            $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('score_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

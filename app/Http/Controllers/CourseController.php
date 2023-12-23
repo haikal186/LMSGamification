@@ -33,11 +33,11 @@ class CourseController extends Controller{
         return to_route('course.index');
     }
 
-    public function show(Request $request, $id){
+    public function show(Request $request, $course_id){
 
-        $course = Course::findOrFail($id);
+        $course = Course::findOrFail($course_id);
         $quizzes = $course->quizzes;
-        $course_id = $course->id;
+        // $course_id = $course->id;
         
         return view('course.show', compact('course', 'quizzes'));
     }

@@ -60,9 +60,9 @@
                                             </svg>
                                         </button>
                                     </form>                                  
-                                        
+                                </div>      
                                     </a>
-                                
+
                             </td>
                         </tr>
                         @endforeach

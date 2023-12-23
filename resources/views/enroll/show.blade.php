@@ -3,64 +3,17 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex align-items-center mb-4 flex-wrap">
-            <h4 class="fs-20 font-w600  me-auto">Course View</h4>
+            <h4 class="fs-20 font-w600  me-auto">Course Overview</h4>
             <div>
-            <a href="javascript:void(0);" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Job</a>
+            <a href="javascript:void(0);" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Course</a>
             <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
             <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
             <a href="javascript:void(0);" class="btn btn-secondary btn-sm"><i class="fas fa-info"></i></a>
             
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-3 col-xxl-4">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header border-0 pb-0">
-                                <h4 class="fs-20 mb-0">Overview</h4>
-                            </div>
-                            <div class="card-body pt-4">
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Job Title:</h5>
-                                    <span>April 30,2021</span>	
-                                </div>
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Experience:</h5>
-                                    <span>2yrs Exp</span>	
-                                </div>
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Vacancy:</h5>
-                                    <span>10</span>	
-                                </div>
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Job Type:</h5>
-                                    <span>Full-Type</span>	
-                                </div>
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Posted Date:</h5>
-                                    <span>13-6-2021</span>	
-                                </div>
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Last Apply Date:</h5>
-                                    <span>12-8-2021</span>	
-                                </div>
-                                <div class="mb-3 d-flex">
-                                    <h5 class="mb-1 fs-14 custom-label">Closed Date:</h5>
-                                    <span>12-8-2021</span>	
-                                </div>
-                            </div>
-                            <div class="card-footer border-0 pt-0 ">
-                                <div class="d-flex justify-content-between flex-wrap">
-                                    <a href="javascript:void(0);" class="btn btn-primary btn-sm mb-3"><i class="fas fa-check me-2 "></i>Apply Now</a>
-                                    <a href="javascript:void(0);" class="btn btn-outline-primary btn-sm mb-3"><i class="fas fa-phone-volume me-2"></i>Contact Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>	
-            <div class="col-xl-9 col-xxl-8">
+        <div class="row">	
+            <div class="col-xl-12 col-xxl-8">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card">

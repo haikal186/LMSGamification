@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-                <form method="POST" action="{{ route('quiz.update', ['course_id' => $course->id, 'quiz_id' => $quiz->id]) }}">
+                    <form method="POST" action="{{ route('quiz.update',  $quiz->id) }}">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -82,72 +82,36 @@
     <div class="d-flex align-items-center mb-4">
         <h4 class="fs-20 font-w600 mb-0 me-auto">Question Preview</h4>
         <div>
-            <a href="{{ route('question.create', ['id' => $quiz->id]) }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add Question</a>
+            <a href="{{ route('question.create', $quiz->id) }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add Question</a>
         </div>
     </div>
     <div class="row">
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Question 1</h5>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Q: Some quick example text to build on the card title and make up the bulk of the card's content.?</p>
-                </div>
-                <div class="card-footer">
-                    <div class="card-footer-link mb-4 mb-sm-0">
-                        <p class="card-text text-dark d-inline">Answer Choice:</p>
-                        <div class="basic-form mt-4">
-                            <div class="col-xl-4 col-xxl-6 col-6">
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 1</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 2</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 3</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 4</label>
+        @foreach($questions as $question)
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Question {{ $question->id }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Q: {{ $question->name }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-footer-link mb-4 mb-sm-0">
+                            <p class="card-text text-dark d-inline">Answer Choice:</p>
+                            <div class="basic-form mt-4">
+                                <div class="col-xl-4 col-xxl-6 col-6">
+                                    @foreach ($question->answers as $answer)
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio"> {{ $answer->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Question 1</h5>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">Q: Some quick example text to build on the card title and make up the bulk of the card's content.?</p>
-                </div>
-                <div class="card-footer">
-                    <div class="card-footer-link mb-4 mb-sm-0">
-                        <p class="card-text text-dark d-inline">Answer Choice:</p>
-                        <div class="basic-form mt-4">
-                            <div class="col-xl-4 col-xxl-6 col-6">
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 1</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 2</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 3</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"> Option 4</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
