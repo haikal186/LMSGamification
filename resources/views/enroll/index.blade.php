@@ -30,7 +30,7 @@
         <div class="col-xl-12">
             <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-4">
-                    <h5>Showing {{ $courses->count() }} of {{ $totalCourse }} course results</h5>
+                    <h5>Showing {{ $enrolls->count(); }} of {{ $courses->count() }} course results</h5>
                     <span>Based on your preferences</span>
                 </div>
                 <div class="d-flex mb-4">
@@ -59,9 +59,9 @@
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="Boxed" role="tabpanel">
                     <div class="row">
-                        @foreach ($courses as $key => $course)
+                        @foreach ($enrolls as $enroll)
                         <div class="col-xl-3 col-xxl-4 col-md-4 col-sm-6">
-                            <a href="{{ route('enroll.show', $course->id) }}">
+                            <a href="{{ route('enroll.show', $enroll->course_id) }}">
                                 <div class="card">
                                     <div class="jobs2 card-body">
                                         <div class="text-center">
@@ -77,11 +77,11 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            <h4 class="fs-20 mb-0">{{ $course->title }}</h4>
+                                            <h4 class="fs-20 mb-0">{{ $enroll->course->name }}</h4>
                                             <span class="text-primary mb-3 d-block">Bubbles Studios</span>
                                         </div>
                                         <div>
-                                            <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Manchester, England</span>
+                                            <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Enroll Date : {{ $enroll->enroll_date }}</span>
                                             <span><i class="fas fa-comments-dollar me-2"></i>Total Student: 100</span>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="d-flex justify-content-between mb-4"> <!-- Added this container -->
                         <div>
-                            <h5 class="mb-0">Showing {{ $course->count() }} of {{ $totalCourse }} Data</h5>
+                            <h5 class="mb-0">Showing {{ $enrolls->count(); }} of {{ $courses->count() }} Data</h5>
                         </div>
                         <nav>
                             <ul class="pagination pagination-circle">
@@ -100,9 +100,9 @@
                                     <a class="page-link" href="javascript:void(0)">Prev</a>
                                 </li>
                                 <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                                {{-- <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
                                 <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
+                                <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li> --}}
                                 <li class="page-item page-indicator job-search-page">
                                     <a class="page-link" href="javascript:void(0)">Next</a>
                                 </li>

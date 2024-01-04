@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Carbon;
 use App\Models\Course;
 use App\Models\Enroll;
 use App\Models\Quiz;
@@ -14,37 +15,46 @@ class EnrollController extends Controller
     public function index()
     {
         $user = auth()->user(); 
-        $enrolledCourseIds = $user->courses->pluck('id')->all(); // Get the IDs of courses the user is enrolled in
-    
-        $courses = Course::whereIn('id', $enrolledCourseIds)->get();
-        $totalCourse = $courses->count();
-    
-        return view('enroll.index', compact('courses', 'totalCourse'));
+        $enrolls = $user->enrolls()->get();
+        $courses = Course::all(); 
+       
+        return view('enroll.index', compact('enrolls','courses'));
     }
 
-    public function create(Request $request, $id)
+    public function store(Request $request, $course_id)
     {
-        $course = Course::findOrFail($id);
+        $courses = Course::findOrFail($course_id);
         $user = auth()->user(); 
-    
-        // Check if the user is already enrolled in the course
-        if ($user->courses->contains($course)) {
-            return redirect()->route('enroll.create', $course->id);
+
+        $is_enrolled = Enroll::where('user_id', $user->id)
+                        ->where('course_id', $course_id)
+                        ->exists();
+
+        if ($is_enrolled) {
+            return redirect()->route('enroll.index');
         }
     
-        // Enroll the user in the course
-        $enroll = new Enroll();
-        $enroll->enroll_date = now();
-        $enroll->user_id = $user->id;
-        $enroll->course_id = $course->id;
-        $enroll->save();
+        $enrolls = Enroll::create([
+            'user_id' => $user->id,
+            'course_id' => $course_id,
+            'enroll_date' => Carbon::now(),
+        ]);
     
-        // Redirect to the list page after successful enrollment
-        return redirect()->route('enroll.index');
+        return view('enroll.index', compact('enrolls','courses'));
     }
 
-    public function show()
+    public function show(Request $request, $course_id)
     {
-        return view('enroll.show');
+        $course = Course::findOrFail($course_id);
+
+        return view('enroll.show',compact('course'));
+    }
+
+    public function quiz(Request $request, $course_id)
+    {
+        $course = Course::findOrFail($course_id);
+
+        
+        return view('enroll.quiz',compact('course'));
     }
 }

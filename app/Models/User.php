@@ -4,12 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Role;
+use App\Models\Score;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -49,20 +48,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /**
-     * Define a many-to-many relationship with the Course model for enrolled courses.
-     *
-     * @return BelongsToMany
-     */
-
-     public function courses(): BelongsToMany
+    
+    public function enrolls()
     {
-        return $this->belongsToMany(Course::class, 'enrollments', 'user_id', 'course_id')
-            ->withPivot('enroll_date');
+        return $this->hasMany(Enroll::class);
     }
 
-    public function hasRole(): BelongsTo
+    public function hasRole()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
     }
 }

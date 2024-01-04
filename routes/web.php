@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CourseController;
 use App\Http\Controllers\QuizController;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\AchievementController;
 
 /*
@@ -38,6 +40,12 @@ Route::middleware(['auth']) -> group(function() {
         Route::delete('/destroy/{id}','destroy')->name('profile.destroy');
         Route::get('/detail/{id}', 'detail')->name('profile.detail');
     });
+
+    Route::prefix('student')->controller(StudentController::class)->group(function () {
+
+        Route::get('/', 'index')->name('student.index');
+
+    });
     
     Route::prefix('course')->controller(CourseController::class)->group(function(){
         Route::get('/', 'index')->name('course.index');
@@ -57,7 +65,8 @@ Route::middleware(['auth']) -> group(function() {
         Route::post('/store/{course_id}', 'store')->name('quiz.store');
         Route::get('/show/{quiz_id}', 'show')->name('quiz.show');
         Route::put('/update/{quiz_id}', 'update')->name('quiz.update');
-    
+        Route::get('/detail/{quiz_id}', 'detail')->name('quiz.detail');
+        Route::get('/create/{quiz_id}', 'create')->name('quiz.create');
     });
     
     Route::prefix('question')->controller(QuestionController::class)->group(function () {
@@ -65,24 +74,33 @@ Route::middleware(['auth']) -> group(function() {
         Route::get('/create/{quiz_id}', 'create')->name('question.create');
         Route::post('/store/{quiz_id}', 'store')->name('question.store');
         Route::get('/show/{question_id}', 'show')->name('question.show');
-        Route::put('/update/{question_id}', 'update')->name('question.update');
+        Route::put('/update/{question_id}', 'update')->name('question.update');        
+    });
+
+    Route::prefix('user_answer')->controller(UserAnswerController::class)->group(function () {
+
+        Route::get('/show/{question_id}', 'show')->name('user_answer.show');
+        Route::post('/store/{question_id}', 'store')->name('user_answer.store');
+        Route::get('/result/{quiz_id}', 'result')->name('user_answer.result');
+        
     });
     
     Route::prefix('enroll')->controller(EnrollController::class)->group(function () {
     
         Route::get('/', 'index')->name('enroll.index');
-        Route::post('/create/{id}', 'create')->name('enroll.create');
-        Route::get('/show/{id}', 'show')->name('enroll.show');
+        Route::post('/store/{course_id}', 'store')->name('enroll.store');
+        Route::get('/show/{course_id}', 'show')->name('enroll.show');
+        Route::get('/quiz/{course_id}', 'show')->name('enroll.quiz');
+
     
     });
 
     Route::prefix('achievement')->controller(AchievementController::class)->group(function () {
     
         Route::get('/', 'index')->name('achievement.index');
-        Route::get('/show', 'show')->name('achievement.show');
+        Route::get('/show/{quiz_id}', 'show')->name('achievement.show');
         
     });
-
 
 });
 

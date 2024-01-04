@@ -9,6 +9,7 @@ use Database\Seeders\UserSeeder;
 use Database\Seeders\AnswerSeeder;
 use Database\Seeders\CourseSeeder;
 use Database\Seeders\QuestionSeeder;
+use Database\Seeders\AchievementSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
             QuizSeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
+            AchievementSeeder::class,
+
         ]);
     }
 }

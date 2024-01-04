@@ -1,73 +1,75 @@
-@extends('layouts.template')
+@extends('layouts.course.template')
 
 @section('content')
     <div class="container-fluid">
-        <div class="d-flex align-items-center mb-4 flex-wrap">
-            <h4 class="fs-20 font-w600  me-auto">Course Overview</h4>
-            <div>
-            <a href="javascript:void(0);" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Course</a>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm"><i class="fas fa-info"></i></a>
-            
+        <div class="row page-titles">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Course</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Overview</a></li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="profile card card-body px-3 pt-3 pb-0">
+                    <div class="profile-head">
+                        <div class="photo-content">
+                            <div class="cover-photo rounded"></div>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-photo">
+                                <img src="{{ asset('images/profile/profile.png') }}" class="img-fluid rounded-circle" alt="">
+                            </div>
+                            <div class="profile-details">
+                                <div class="profile-name px-3 pt-2">
+                                    <h4 class="text-primary mb-0">Mitchell C. Shay</h4>
+                                    <p>UX / UI Designer</p>
+                                </div>
+                                <div class="profile-email px-2 pt-2">
+                                    <h4 class="text-muted mb-0">info@example.com</h4>
+                                    <p>Email</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">	
-            <div class="col-xl-12 col-xxl-8">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header d-block">
-                                <h4 class="fs-20 d-block"><a href="javascript:void(0);">PHP Developer</a></h4>
-                                <div class="d-block">
-                                    <span class="me-2"><a href="javascript:void(0);"><i class="fas fa-briefcase me-2"></i>Apcd company</a></span>
-                                    <span class="me-2"><a href="javascript:void(0);"><i class="fas fa-map-marker-alt me-2"></i>USA</a></span>
-                                    <span><a href="javascript:void(0);"><i class="fas fa-eye me-2"></i>View</a></span>
-                                </div>
+        <div class="d-flex align-items-center mb-4">
+            <h4 class="fs-20 font-w600 mb-0 me-auto">Course Summary</h4>
+        </div>
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">{{ $course->name }}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="nav flex-column nav-pills mb-3">
+                                <a href="#v-pills-home" data-bs-toggle="pill" class="nav-link active show">Course Description</a>
+                                <a href="#v-pills-profile" data-bs-toggle="pill" class="nav-link">Course Learning Outcomes</a>
+                                <a href="#v-pills-messages" data-bs-toggle="pill" class="nav-link">Course Syllabus</a>
                             </div>
-                            <div class="card-body">
-                                <h4 class="fs-20 mb-3">Description</h4>
-                                <div class="ms-4">
-                                    <p><i class="fas fa-dot-circle me-2"></i>We are Looking For a PHP Doveloper, who is must be familiar with the PHP fundamentals& PHP framwork. Experience with Laravel & mixs, Livewire </p>
-                                    <p><i class="fas fa-dot-circle me-2 "></i>Good knowledge of SQL and related databases, with a preference for those with MySQL experience.</p>
-                                    <p><i class="fas fa-dot-circle me-2 "></i>Excellent knowledge of the basic PHP 7 or web server exploits along with their solutions.</p>
-                                    <p><i class="fas fa-dot-circle me-2 "></i>Experience building or maintaining a CMS.</p>
-                                    <p><i class="fas fa-dot-circle me-2 "></i>Knowledge of MVC frameworks.</p>
-                                    <p><i class="fas fa-dot-circle me-2 "></i>A detailed understanding of database design and administration.</p>
-                                    <p><i class="fas fa-dot-circle me-2 "></i>The ability to integrate a variety of data sources and databases into a single system.</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="tab-content">
+                                <div id="v-pills-home" class="tab-pane fade active show">
+                                    <p>
+                                        {{ $course->description }}
+                                    </p>
                                 </div>
-                                <hr>
-                                <h4 class="fs-20 mb-3">Job Details</h4>
-                                <div class="row mb-3">
-                                    <div class="col-xl-6">
-                                        <div class="ms-4">
-                                            <p class="font-w500 mb-3"><span class="custom-label">Job Role :</span><span class="font-w400"> PHP Developer</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Role:</span><span class="font-w400"> Front-End Doveloper</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Min Salary:</span><span class="font-w400"> $20,000</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Max Salary:</span><span class="font-w400"> $30,000</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Job Tags:</span><span class="font-w400"> PHP, Laravel, HTML5, SCSS,CSS, Javascript</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="ms-4">
-                                            <p class="font-w500 mb-3"><span class="custom-label">Job Experience:</span><span class="font-w400"> 2yrs+</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Launges:</span><span class="font-w400"> Hindi, English</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Locality:</span><span class="font-w400"> USA, UK, India</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Eligibility:</span><span class="font-w400"> B.tech ,Any Graduate</span></p>
-                                            <p class="font-w500 mb-3"><span class="custom-label">Company :</span><span class="font-w400"> Abcd corporation pvt ltd</span></p>
-                                        </div>
-                                    </div>
-                                </div>	
-                                <div class="d-flex justify-content-between py-4 border-bottom border-top flex-wrap">
-                                    <span>Job ID: #8976542</span>
-                                    <span>Posted By <strong>Company</strong>/ 12-01-2021</span>
+                                <div id="v-pills-profile" class="tab-pane fade">
+                                    <p>
+                                        Course Learning outcomes...
+                                    </p>
                                 </div>
-                            </div>
-                            <div class="card-footer border-0">
-                                <div>
-                                    <a href="javascript:void(0);" class="btn btn-primary btn-md me-2 mb-3"><i class="far fa-check-circle me-2"></i>Apply</a>
-                                    <a href="javascript:void(0);" class="btn btn-warning btn-md me-2 mb-3"><i class="fas fa-share-alt me-2"></i>Share Job</a>
-                                    <a href="javascript:void(0);" class="btn btn-secondary btn-md mb-3"><i class="fas fa-print me-2"></i>Print</a>
+                                <div id="v-pills-messages" class="tab-pane fade">
+                                    <p>
+                                        Course Syllabus:
+                                    </p>
+                                    <div>
+                                        1.
+                                    </div>
                                 </div>
                             </div>
                         </div>

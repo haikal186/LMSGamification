@@ -37,47 +37,57 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($data as $achievement)
-                        <tr>
-                            <td>{{ $achievement['id'] }}</td>
-                            <td>{{ $achievement['course_name'] }}</td>
-                            <td class="wspace-no">
-                                <span class="fs-16">
-                                    <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="53" height="53" viewBox="0 0 53 53">
-                                      <g  transform="translate(0.243)">
-                                        <rect  width="53" height="53" rx="12" transform="translate(-0.243)" fill="#c5c5c5"/>
-                                        <g  transform="translate(-0.243)">
-                                          <rect  data-name="placeholder" width="53" height="53" rx="12" fill="#48c290"/>
-                                          <ellipse  data-name="Ellipse 12" cx="13.243" cy="13.43" rx="13.243" ry="13.43" transform="translate(11.152 14.922)" fill="#fff"/>
-                                          <ellipse  data-name="Ellipse 11" cx="8.016" cy="8.207" rx="8.016" ry="8.207" transform="translate(27.183 11.191)" fill="#ffe70c" style="mix-blend-mode: multiply;isolation: isolate"/>
-                                        </g>
-                                      </g>
-                                    </svg>
-                                    {{ $achievement['quiz_name'] }}
-                                </span>
-                            </td>
-                            <td>{{ $achievement['date_completed'] }}</td>
-                            <td>
-                                @if($achievement['status'] === 'Complete')
-                                <span class="badge badge-success badge-lg light">{{ $achievement['status'] }}</span>
-                                @else
-                                <span class="badge badge-danger badge-lg light">{{ $achievement['status'] }}</span>
+                        @foreach($grouped_achievements as $quiz_id => $achievements)
+                            <tr>
+                             @foreach($achievements as $key => $achievement)
+                                 @if($loop->first)
+                                    <td>{{ $loop->parent->iteration }}</td>
+                                    <td>{{ $achievement->quizzes->course->name }}</td>
+                                    <td class="wspace-no">
+                                        <span class="fs-16">
+                                            <!-- Your SVG or image -->
+                                            {{ $achievement->quizzes->name }}
+                                        </span>
+                                    </td>
+                                    <td>{{ $achievement->date_completed }}</td>
+                                    <td>
+                                        <h6>Completed
+                                            <span class="pull-end">
+                                                @if(isset($completion_percentages[$quiz_id]))
+                                                    {{ $completion_percentages[$quiz_id] }}%
+                                                @else
+                                                    0%
+                                                @endif
+                                            </span>
+                                        </h6>
+                                        <div class="progress ">
+                                            <div class="progress-bar bg-danger progress-animated" style="width: @if(isset($completion_percentages[$quiz_id])){{ $completion_percentages[$quiz_id] }}%@else 0%@endif; height:6px;" role="progressbar">
+                                                <span class="sr-only">
+                                                    @if(isset($completion_percentages[$quiz_id]))
+                                                        {{ $completion_percentages[$quiz_id] }}% Complete
+                                                    @else
+                                                        0% Complete
+                                                    @endif
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons d-flex">
+                                            <a href="{{ route('achievement.show', $quiz_id) }}" class="btn btn-success light mr-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
+                                                    <g data-name="Layer 21">
+                                                        <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
+                                                        <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                            <!-- Add other action buttons here -->
+                                        </div>
+                                    </td>
                                 @endif
-                            </td>
-                            <td>
-                                <div class="action-buttons d-flex">
-                                    <a href="{{ route('achievement.show') }}" class="btn btn-success light mr-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px">
-                                            <g data-name="Layer 21">
-                                                <path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path>
-                                                <circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                    <!-- Add other action buttons here -->
-                                </div>
-                            </td>
-                        </tr>
+                            @endforeach
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

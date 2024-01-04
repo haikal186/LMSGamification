@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('is_correct')->nullable();
             $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('question_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('answer_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

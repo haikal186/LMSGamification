@@ -45,6 +45,22 @@
                                 {{-- <input type="text" class="form-control solid js-example-disabled" placeholder="Name" aria-label="name"> --}}
                             </div>
                             <div class="col-xl-6  col-md-6 mb-4">
+                                <label  class="form-label font-w600">Quiz Difficulty<span class="text-danger scale5 ms-2">*</span></label>
+                                <select class ="form-select form-control solid" name="level">
+                                    <option selected>Choose...</option>
+                                    <option value="Easy" {{ $quiz->level === 'Easy' ? 'selected' : '' }}>Easy</option>
+                                    <option value="Medium" {{ $quiz->level === 'Medium' ? 'selected' : '' }}>Medium</option>
+                                    <option value="Hard" {{ $quiz->level === 'Hard' ? 'selected' : '' }}>Hard</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label  class="form-label font-w600">Quiz Duration (Seconds)<span class="text-danger scale5 ms-2">*</span></label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                    <input type="text" name="quiz_duration" class="form-control" value="{{ $quiz->quiz_duration }}">
+                                </div>
+                            </div>
+                            <div class="col-xl-6  col-md-6 mb-4">
                                 <label  class="form-label font-w600">Image<span class="text-danger scale5 ms-2">*</span></label>
                                 <div class="input-group mb-9">
                                     <span class="input-group-text">Upload</span>
@@ -63,14 +79,11 @@
                             <div class="col-xl-12 mb-4">
                                 <label  class="form-label font-w600">Description:<span class="text-danger scale5 ms-2">*</span></label>
                                 <textarea class="form-control solid js-example-disabled" name="description" aria-label="With textarea">{{ $quiz->description }}</textarea>
-                                {{-- <textarea class="form-control solid js-example-disabled" aria-label="With textarea"></textarea> --}}
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-end">
                         <div>
-                            {{-- <button class="btn btn-primary me-2" id="js-programmatic-enable">Enable</button>
-                            <button class="btn btn-primary" id="js-programmatic-disable">Disable</button> --}}
                             <button class="btn btn-secondary" type="submit">Update</button>
                         </div>
                     </div>

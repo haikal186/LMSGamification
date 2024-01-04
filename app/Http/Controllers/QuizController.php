@@ -8,6 +8,8 @@ use App\Models\Course;
 use App\Models\Enroll;
 use App\Models\Answer;
 use App\Models\Quiz;
+use App\Models\Question;
+
 
 class QuizController extends Controller
 {
@@ -46,19 +48,25 @@ class QuizController extends Controller
         return view('quiz.show', compact('quiz', 'course', 'questions'));
     }
 
-
     public function update(Request $request, $quiz_id)
     {
         $quiz = Quiz::findOrFail($quiz_id); 
         $quiz->update([
             'name' => $request->name,
             'description' => $request->description,
+            'level' => $request->level,
+            'quiz_duration' => $request->quiz_duration,
         ]);
 
         $quiz_id = $quiz->id;
         return redirect()->route('quiz.show', ['quiz_id' => $quiz_id]);
-
     }
 
+    public function detail(Request $request,$quiz_id)
+    {
+        $quiz = Quiz::findOrFail($quiz_id); 
+
+        return view('quiz.detail',compact('quiz'));
+    }
 
 }

@@ -46,14 +46,17 @@ class QuestionController extends Controller
         $user = Auth()->user();
         $question_find = Question::findOrFail($question_id);
         $quiz = $question_find->quiz;
+    
         $questions = Question::whereHas('quiz', function ($q) use ($user) {
             $q->whereHas('course', function ($q) use ($user) {
-                $q->whereHas('enrolls', function ($q) use ($user) {
-                    $q->where('user_id', $user->id);
+                $q->when($user -> role == 'student', function($q) use ($user) {
+                    $q->whereHas('enrolls', function ($q) use ($user) {
+                        $q->where('user_id', $user->id);
+                    });
                 });
             });
         })->get();
-        // Answer::where()
+
         $question = Question::findOrFail($question_id);
         return view('question.show', compact('questions','question_find','quiz','question'));
 

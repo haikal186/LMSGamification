@@ -28,55 +28,30 @@
     </div>
 </div>
 <ul class="metismenu" id="menu">
-    <li>
-        <a href="#" class="" href="javascript:void()" aria-expanded="false">
-            <i class="flaticon-025-dashboar[]d"></i>
-            <span class="nav-text">Dashboard</span>
-        </a>
-    </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-            <i class="flaticon-025-dashboar[]d"></i>
-            <span class="nav-text">Profile</span>
-        </a>
-        <ul aria-expanded="false">
-            <li><a href="{{ route('profile.index') }}">List Instructors</a></li>
-            <li><a href="{{ route('student.index') }}">List Students</a></li>
-            <li><a href="{{ route('profile.detail', ['id' => auth()->user()->id]) }}">Your Profile</a></li>
-        </ul>
-
-    </li>
-    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-            <i class="flaticon-093-waving"></i>
+            <i class="flaticon-025-dashboard"></i>
             <span class="nav-text">Course</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{ route('course.index') }}">Course Lists</a></li>
-            {{-- @if(auth()->user()->hasRole->name == 'lecturer') --}}
-            <li><a href="{{ route('course.create') }}">Create Course</a></li>
-            {{-- @endif --}}
-            <li><a href="{{ route('enroll.index') }}">Your Course</a></li>
-            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Add Content</a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('course.lesson') }}">Add Lesson</a></li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-        <i class="flaticon-050-info"></i>
-            <span class="nav-text">Assesstment</span>
-        </a>
-        <ul aria-expanded="false">
-            <li><a href="{{ route('quiz.index') }}">Quiz List</a></li>
-            <li><a href="#">Assignment</a></li>
+            <li><a href="{{ route('enroll.show', $course->id) }}">Course Overview</a></li>
+            <li><a href="{{ route('course.create') }}">Course Content</a></li>
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
         <i class="flaticon-022-copy"></i>
+            <span class="nav-text">Assesstment</span>
+        </a>
+        <ul aria-expanded="false">
+            <li><a href="{{ route('enroll.quiz', $course->id) }}">Quiz List</a></li>
+            <li><a href="#">Assignment</a></li>
+        </ul>
+    </li>
+    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+        <i class="flaticon-050-info"></i>
         <span class="nav-text">Overview</span>
     </a>
     <ul aria-expanded="false">
-        <li><a href="./form-element.html">Course Overview</a></li>
+        {{-- <li><a href="./form-element.html">Course Overview</a></li> --}}
         <li><a href="{{ route('achievement.index') }}">Achievement</a></li>
     </ul>
     </li>

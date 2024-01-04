@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Quiz extends Model
 {
@@ -19,6 +20,8 @@ class Quiz extends Model
     protected $fillable = [
         'name',
         'description',
+        'level',
+        'quiz_duration',
         'course_id',
     ];
 
@@ -27,10 +30,11 @@ class Quiz extends Model
         return $this->hasMany(Quiz::class);
     }
 
-    public function score(): HasOne
+    public function scores()
     {
-        return $this->hasOne(Score::class);
+        return $this->hasMany(Score::class);
     }
+
 
     public function course()
     {

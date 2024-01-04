@@ -13,8 +13,8 @@ class Achievement extends Model
         'name',
     ];
 
-    public function score(): HasOne
+    public function scores() 
     {
-        return $this->hasOne(Score::class);
+        return $this->hasMany(Score::class);
     }
 }
