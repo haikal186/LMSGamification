@@ -47,6 +47,7 @@
             </div>
         </div>
     </div>
+    <!-- Quiz & Assignment -->
     <div class="row mt-4">
         <div class="col-xl-6">
             <div class="card">
@@ -145,7 +146,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Quiz Name</th>
+                                            <th>Assignment Name</th>
                                             <th>Type</th>
                                             <th>Created Date</th>
                                             <th>Actions</th>
@@ -191,13 +192,13 @@
                 </div>
                 <div class="card-footer text-end">
                     <div>
-                        <a href="{{ route('profile.create') }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Assignment</a>        
+                        <a class="btn btn-primary me-3 btn-sm" data-bs-toggle="modal" data-bs-target="#addAssignmentModal"><i class="fas fa-plus me-2"></i>Add Assignment</a>        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!--  Quiz Modal -->
     <div class="modal fade" id="addQuizModal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -246,6 +247,78 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div> 
+    
+     <!--  Assignment Modal -->
+     <div class="modal fade" id="addAssignmentModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Assignment Detail</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="comment-form" method="POST" action="{{ route('assignment.store', $course->id) }}">
+                        @csrf
+                        <div class="row"> 
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label class="text-black font-w600 form-label">Assignment Name <span class="required">*</span></label>
+                                    <input type="text" class="form-control" name="name" placeholder="Assignment name...">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="text-black font-w600 form-label">Assign Date:</label>
+                                <div class="mb-3">
+                                    <label class="text-black font-w600 form-label">Date*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                        <input name="assign_date" class="datepicker-default form-control" id="datepicker">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="text-black font-w600 form-label">Time*</label>
+                                <div class="input-group clockpicker">
+                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                    <input name="assign_time" type="text" class="form-control" value="12:00 PM" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3">
+                                <label class="text-black font-w600 form-label">Deadline:</label>
+                                <div class="mb-3">
+                                    <label class="text-black font-w600 form-label">Date*</label>
+                                    <div class="input-group">
+                                        <div class="input-group-text"><i class="far fa-calendar"></i></div>
+                                        <input name="deadline_date" class="datepicker-default form-control" id="datepicker">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label class="text-black font-w600 form-label">Time*</label>
+                                <div class="input-group clockpicker">
+                                    <div class="input-group-text"><i class="far fa-clock"></i></div>
+                                    <input name="deadline_time" type="text" class="form-control" value="12:00 PM" readonly>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mt-3">
+                                <div class="mb-6">
+                                    <label class="text-black font-w600 form-label">Description*</label>
+                                    <textarea rows="8" class="form-control" name="description" placeholder="Description..."></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-lg-12 text-end">
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary me-3 btn-sm">Create</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
 </div>
 @endsection
