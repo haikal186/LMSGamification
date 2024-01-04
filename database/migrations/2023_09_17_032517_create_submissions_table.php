@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->nullable();
+            $table->string('submission_date')->nullable();
             $table->foreignId('assignment_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
