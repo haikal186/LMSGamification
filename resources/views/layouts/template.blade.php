@@ -20,6 +20,21 @@
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
 	<link href="{!! asset('/vendor/jquery-nice-select/css/nice-select.css') !!}" rel="stylesheet">
 	<link href="{!! asset('/vendor/owl-carousel/owl.carousel.css') !!}" rel="stylesheet">
+
+	<!-- Daterange picker -->
+	<link href="{{ asset('vendor/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+	<!-- Clockpicker -->
+	<link href="{{ asset('vendor/clockpicker/css/bootstrap-clockpicker.min.css') }}" rel="stylesheet">
+	<!-- asColorpicker -->
+	<link href="{{ asset('vendor/jquery-asColorPicker/css/asColorPicker.min.css') }}" rel="stylesheet">
+	<!-- Material color picker -->
+	<link href="{{ asset('vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet">
+
+	<!-- Pick date -->
+	<link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.css') }}">
+	<link rel="stylesheet" href="{{ asset('vendor/pickadate/themes/default.date.css') }}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 	
 	<!-- Style css -->
     <link href="{!! asset('/css/style.css') !!}" rel="stylesheet">
@@ -679,6 +694,35 @@
     <script src="{!! asset('/vendor/flot/jquery.flot.pie.js') !!}"></script>
     <script src="{!! asset('/vendor/flot/jquery.flot.resize.js') !!}"></script>
     <script src="{!! asset('/vendor/flot-spline/jquery.flot.spline.min.js') !!}"></script>
+
+	<!-- Daterangepicker -->
+	<!-- momment js is must -->
+	<script src="{{ asset('vendor/moment/moment.min.js') }}"></script>
+	<script src="{{ asset('vendor/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+	<!-- clockpicker -->
+	<script src="{{ asset('vendor/clockpicker/js/bootstrap-clockpicker.min.js') }}"></script>
+	<!-- asColorPicker -->
+	<script src="{{ asset('vendor/jquery-asColor/jquery-asColor.min.js') }}"></script>
+	<script src="{{ asset('vendor/jquery-asGradient/jquery-asGradient.min.js') }}"></script>
+	<script src="{{ asset('vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js') }}"></script>
+	<!-- Material color picker -->
+	<script src="{{ asset('vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+	<!-- pickdate -->
+	<script src="{{ asset('vendor/pickadate/picker.js') }}"></script>
+	<script src="{{ asset('vendor/pickadate/picker.time.js') }}"></script>
+	<script src="{{ asset('vendor/pickadate/picker.date.js') }}"></script>
+
+	<!-- Daterangepicker -->
+	<script src="{{ asset('js/plugins-init/bs-daterange-picker-init.js') }}"></script>
+	<!-- Clockpicker init -->
+	<script src="{{ asset('js/plugins-init/clock-picker-init.js') }}"></script>
+	<!-- asColorPicker init -->
+	<script src="{{ asset('js/plugins-init/jquery-asColorPicker.init.js') }}"></script>
+	<!-- Material color picker init -->
+	<script src="{{ asset('js/plugins-init/material-date-picker-init.js') }}"></script>
+	<!-- Pickdate -->
+	<script src="{{ asset('js/plugins-init/pickadate-init.js') }}"></script>
+
 
 	 <!-- Init file -->
 	 <script src=".{!! asset('/js/plugins-init/widgets-script-init.js') !!}"></script>
