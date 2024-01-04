@@ -8,6 +8,7 @@ use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\AchievementController;
 
@@ -57,6 +58,13 @@ Route::middleware(['auth']) -> group(function() {
         Route::put('/update/{id}', 'update')->name('course.update');
         Route::get('/lesson', 'lesson')->name('course.lesson');
     
+    });
+
+    Route::prefix('assignment')->controller(AssignmentController::class)->group(function () {
+    
+        Route::post('/store/{course_id}', 'store')->name('assignment.store');
+        Route::get('/show/{assignment_id}', 'show')->name('assignment.show');
+
     });
     
     Route::prefix('quiz')->controller(QuizController::class)->group(function () {
