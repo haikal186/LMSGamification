@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
+            $table->string('assigned_date')->nullable();
+            $table->string('deadline')->nullable();
             $table->foreignId('course_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
