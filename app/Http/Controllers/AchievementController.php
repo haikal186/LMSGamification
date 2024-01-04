@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Enroll;
@@ -13,62 +14,63 @@ class AchievementController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+        $user_achievements = $user->scores()->get();
 
-        $userId = auth()->id(); 
+        $completion_percentages = [];
+        $grouped_achievements = [];
 
-        // Get the courses taken by the user
-        $courses = Course::whereIn('id', function ($query) use ($userId) {
-            $query->select('course_id')
-                ->from('enrollments')
-                ->where('user_id', $userId);
-        })->get();
+        foreach ($user_achievements as $achievement) {
+            $quiz_id = $achievement->quiz_id;
 
-        $data = [];
-        $counter = 1;
-
-        foreach ($courses as $course) {
-            // Get quizzes for each course taken by the user
-            $quizzes = Quiz::where('course_id', $course->id)->get();
-
-            foreach ($quizzes as $quiz) {
-                // Get all achievement IDs for this quiz
-                $allAchievements = Achievement::pluck('id')->toArray();
-
-                // Get achievement IDs achieved by the user for this quiz
-                $userAchievements = Score::where('user_id', $userId)
-                    ->where('quiz_id', $quiz->id)
-                    ->pluck('achievement_id')
-                    ->toArray();
-
-                // Check if the user has achieved all the achievements for this quiz
-                $isComplete = count(array_diff($allAchievements, $userAchievements)) === 0;
-
-                // Determine the status based on completeness
-                $status = $isComplete ? 'Complete' : 'Not Complete';
-
-                $dateTaken = '25-01-2021'; // Replace with actual date retrieval
-
-                // Prepare data for view
-                $data[] = [
-                    'id' => $counter++,
-                    'course_name' => $course->name,
-                    'quiz_name' => $quiz->name,
-                    'date_completed' => $dateTaken,
-                    'status' => $status,
-                ];
+            if (!array_key_exists($quiz_id, $grouped_achievements)) {
+                $grouped_achievements[$quiz_id] = collect([$achievement]);
+            } else {
+                $grouped_achievements[$quiz_id]->push($achievement);
             }
         }
 
-        // Pass $data to the view for rendering
-        return view('achievement.index', compact('data'));
+        foreach ($grouped_achievements as $quiz_id => $achievements) {
+            $total_achievements = Achievement::count();
+
+            $completed_achievements = $achievements
+                ->whereNotNull('achievement_id')
+                ->count();
+
+            if ($completed_achievements > 0) {
+                $percentage = ($completed_achievements / $total_achievements) * 100;
+            } else {
+                $percentage = 0;
+            }
+
+            $completion_percentages[$quiz_id] = $percentage;
+        }
+
+        return view('achievement.index', compact('grouped_achievements', 'completion_percentages','quiz_id'));
     }
 
-    public function show()
+    public function show(Request $request, $quiz_id)
     {
-        $achievement = Achievement::all();
-        $totalAchievement = $achievement->count();
-        return view('achievement.show',compact('achievement','totalAchievement'));
+        $user = auth()->user();
+        $scores = $user->scores()->get();
 
+        $quiz = Quiz::findOrFail($quiz_id);
+        $quiz_name = $quiz->name;
+
+        $achievements = Achievement::all();
+        $total_achievement = Achievement::count();
+
+        $user_achievement_ids = [];
+
+        foreach ($scores as $score) {
+            if ($score->achievement_id !== null) {
+                $user_achievement_ids[] = $score->achievement_id;
+            }
+        }
+
+        $user_achievements = count($user_achievement_ids);
+
+        return view('achievement.show', compact('achievements', 'total_achievement', 'user_achievements', 'quiz_name'));
     }
 }
 
