@@ -64,7 +64,8 @@ Route::middleware(['auth']) -> group(function() {
     
         Route::post('/store/{course_id}', 'store')->name('assignment.store');
         Route::get('/show/{assignment_id}', 'show')->name('assignment.show');
-
+        Route::get('/edit/{assignment_id}', 'edit')->name('assignment.edit');
+        Route::put('/update/{assignment_id}', 'update')->name('assignment.update');
     });
     
     Route::prefix('quiz')->controller(QuizController::class)->group(function () {
