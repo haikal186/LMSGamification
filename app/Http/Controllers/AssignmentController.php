@@ -34,7 +34,33 @@ class AssignmentController extends Controller
     {
         $assignment = Assignment::findOrFail($assignment_id);
 
-        return view('assignment.show');
+        return view('assignment.show', compact('assignment'));
+    }
+
+    public function edit(Request $request, $assignment_id)
+    {
+        $assignment = Assignment::findOrFail($assignment_id);
+
+        return view('assignment.edit', compact('assignment'));
+    }
+
+    public function update(Request $request, $assignment_id)
+    {
+        $assignment = Assignment::findOrFail($assignment_id);
+
+        // Call assign date and deadline function
+        $formatted_assign_date = $this->combineAssignDateTime($request->assign_date, $request->assign_time);
+        $formatted_deadline    = $this->combineDeadlineDateTime($request->deadline_date, $request->deadline_time);
+
+        $assignment->name          = $request->name;
+        $assignment->status        = $request->status;
+        $assignment->assigned_date = $formatted_assign_date;
+        $assignment->deadline      = $formatted_deadline;
+        $assignment->description   = $request->description;
+
+        $assignment->save();
+
+        return view('assignment.edit', compact('assignment'));
     }
 
     private function combineAssignDateTime($date, $time)
