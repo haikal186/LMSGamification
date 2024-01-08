@@ -37,9 +37,10 @@ class CourseController extends Controller{
 
         $course = Course::findOrFail($course_id);
         $quizzes = $course->quizzes;
-        // $course_id = $course->id;
+
+        $assignments = $course->assignments;
         
-        return view('course.show', compact('course', 'quizzes'));
+        return view('course.show', compact('course', 'quizzes','assignments'));
     }
 
     public function edit(string $id)
