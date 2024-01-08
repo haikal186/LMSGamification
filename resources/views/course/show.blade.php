@@ -82,9 +82,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($quizzes as $quiz)
+                                        @foreach ($quizzes as $key => $quiz)
                                         <tr>
-                                            <td>{{ $quiz->id }}</td>
+                                            <td>{{ $key + 1 }}</td>
                                             <td>{{ $quiz->name }}</td>
                                             <td class="wspace-no">35 students</td>
                                             <td>{{ $quiz->created_at }}</td>
@@ -147,23 +147,24 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Assignment Name</th>
-                                            <th>Type</th>
+                                            <th>Status</th>
                                             <th>Created Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($assignments as $key => $assignment)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Network Engineer</td>
-                                            <td class="wspace-no">Full-Time</td>
-                                            <td>12-01-2021</td>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $assignment->name }}</td>
+                                            <td class="wspace-no">{{ $assignment->status }}</td>
+                                            <td>{{ $assignment->created_at }}</td>
                                             <td>
                                                 <div class="action-buttons d-flex">
-                                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
+                                                    <a href="{{ route('assignment.show', $assignment->id) }}" class="btn btn-success light mr-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
                                                     </a>
-                                                    <a href="javascript:void(0);" class="btn btn-secondary light mr-2">
+                                                    {{-- <a href="javascript:void(0);" class="btn btn-secondary light mr-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                                 <rect x="0" y="0" width="24" height="24"></rect>
@@ -171,7 +172,7 @@
                                                                 <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"></rect>
                                                             </g>
                                                         </svg>
-                                                    </a>
+                                                    </a> --}}
                                                     <a href="javascript:void(0);" class="btn btn-danger light">
                                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -184,6 +185,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -250,7 +252,7 @@
     </div> 
     
      <!--  Assignment Modal -->
-     <div class="modal fade" id="addAssignmentModal">
+    <div class="modal fade" id="addAssignmentModal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
