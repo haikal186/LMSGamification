@@ -1,10 +1,10 @@
 <div class="row justify-content-center align-items-center">
-    @foreach ($questions as $question)
+    @foreach ($questions as $key => $question)
     <a href="{{ route('question.show', $question->id) }}">
     <div class="col-xl-10">
         <div class="card text-center">
             <div class="card-body mt-4">
-                <h5 class="card-text">Question {{ $question->id }}</h5>
+                <h5 class="card-text">Question {{ $key + 1 }}</h5>
             </div>
         </div>
     </div>
