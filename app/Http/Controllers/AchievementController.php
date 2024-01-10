@@ -70,7 +70,7 @@ class AchievementController extends Controller
 
         $user_achievements = count($user_achievement_ids);
 
-        return view('achievement.show', compact('achievements', 'total_achievement', 'user_achievements', 'quiz_name'));
+        return view('achievement.show', compact('achievements', 'total_achievement', 'user_achievements', 'quiz_name','user_achievement_ids'));
     }
 }
 
