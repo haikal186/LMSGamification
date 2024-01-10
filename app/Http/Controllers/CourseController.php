@@ -61,6 +61,21 @@ class CourseController extends Controller{
 
         return redirect()->route('course.show', $course->id);
     }
+
+    public function delete(Request $request, $course_id)
+    {
+        $course = Course::findOrFail($course_id);      
+
+        return view('course.delete', compact('course'));
+    }
+
+    public function destroy(Request $request, $course_id)
+    {
+        $course = Course::findOrFail($course_id);
+        $course->delete();
+        
+        return redirect()->route('course.index')->with('success', 'User deleted successfully');
+    }
     
     public function lesson()
     {
