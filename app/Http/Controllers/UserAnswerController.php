@@ -204,6 +204,11 @@ class UserAnswerController extends Controller
             $total_score = $score->score; 
         }
 
+        $user_answers = UserAnswer::where('user_id', $user->id)
+        ->whereIn('question_id', $quiz->questions->pluck('id'))
+        ->get()
+        ->groupBy('question_id');
+
         $user_scores = Score::where('user_id', $user->id)
                             ->where('quiz_id', $quiz->id)
                             ->get();
@@ -217,7 +222,7 @@ class UserAnswerController extends Controller
 
         $question_numbers = $quiz->questions;
 
-        return view('user_answer.result', compact('quiz', 'question_numbers', 'achievements', 'achievement_ids','total_score'));
+        return view('user_answer.result', compact('quiz', 'question_numbers', 'achievements', 'achievement_ids','total_score','user_answers'));
     }
 
 }
