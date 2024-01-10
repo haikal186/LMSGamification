@@ -57,7 +57,10 @@ Route::middleware(['auth']) -> group(function() {
         Route::get('/edit/{id}','edit')->name('course.edit');
         Route::put('/update/{id}', 'update')->name('course.update');
         Route::get('/lesson', 'lesson')->name('course.lesson');
-    
+        Route::get('/delete/{course_id}','delete')->name('course.delete');
+        Route::delete('/destroy/{course_id}','destroy')->name('course.destroy');
+
+        
     });
 
     Route::prefix('assignment')->controller(AssignmentController::class)->group(function () {
