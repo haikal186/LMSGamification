@@ -65,10 +65,13 @@
                                 <div class="basic-form mt-2">
                                     <div class="col-xl-6 col-sm-6">
                                         @foreach ($question->answers as $answer)
-                                            <div class="radio">
-                                                <input type="radio" name="optradio"> {{ $answer->name }}
-                                            </div>
-                                        @endforeach
+                                        <div class="radio">
+                                            <input type="radio" name="optradio_{{ $question->id }}" 
+                                                {{ ($user_answers[$question->id]->pluck('answer_id')->contains($answer->id)) ? 'checked' : '' }}
+                                            > 
+                                            {{ $answer->name }}
+                                        </div>
+                                    @endforeach
                                     </div>
                                 </div>
                             </div>
