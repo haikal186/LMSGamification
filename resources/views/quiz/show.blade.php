@@ -114,7 +114,7 @@
                                 <div class="col-xl-6 col-sm-6">
                                     @foreach ($question->answers as $answer)
                                         <div class="radio">
-                                            <input type="radio" name="optradio"> {{ $answer->name }}
+                                            <input type="radio" name="optradio_{{ $question->id }}" {{ $answer->is_true ? 'checked' : '' }}> {{ $answer->name }}
                                         </div>
                                     @endforeach
                                 </div>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary me-3 btn-sm">Button</a>
+                        <a href="{{ route('question.show', $question->id) }}" class="btn btn-primary me-3 btn-sm">Update</a>
                     </div>
                 </div>
             </div>
