@@ -41,7 +41,7 @@
                     </div>
                     <div>
                         <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning btn-md me-2 mb-2"><i class="fas fa-share-alt me-2"></i>Edit Profile</a>
-                        <a href="javascript:void(0);" class="btn btn-primary btn-md me-2 mb-2"><i class="fas fa-download me-2"></i>Delete Course</a>
+                        <a href="{{ route('course.delete', $course->id) }}" class="btn btn-primary btn-md me-2 mb-2"><i class="fas fa-download me-2"></i>Delete Course</a>
                     </div>
                 </div>
             </div>
