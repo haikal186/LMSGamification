@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <form method="POST" action="{{ route('question.store', $quiz->id) }}">
+        <form method="POST" action="{{ route('question.store', $quiz->id) }}" enctype="multipart/form-data">        
         @csrf
         <div class="row">
             <div class="col-xl-12">
@@ -24,7 +24,7 @@
                                     <div class="input-group mb-9">
                                         <span class="input-group-text">Upload</span>
                                         <div class="form-file">
-                                            <input type="file" class="form-file-input form-control">
+                                            <input type="file" name="file" class="form-file-input form-control">
                                         </div>
                                     </div>
                                 </div>
