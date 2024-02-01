@@ -15,7 +15,7 @@ class Role extends Model
         'name',
     ];
 
-    public function user(): HasOne
+    public function user()
     {
         return $this->hasOne(User::class);
     }
