@@ -23,11 +23,6 @@
         </div>
         <div class="d-flex align-items-center mb-4">
             <h4 class="fs-20 font-w600 mb-0 me-auto">Quiz Detail</h4>
-            <div>
-                <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
-                <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
-                <a href="javascript:void(0);" class="btn btn-primary btn-sm"><i class="fas fa-info"></i></a>
-            </div>
         </div>
     </div>
 

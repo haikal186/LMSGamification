@@ -45,4 +45,9 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function file()
+    {
+        return $this->morphOne(File::class, 'fileable');
+    }
 }

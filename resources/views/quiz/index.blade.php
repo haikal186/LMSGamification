@@ -2,31 +2,27 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="d-flex align-items-center flex-wrap search-job bg-white px-0 mb-4">
-        <div class="col-xl-2 col-xxl-3 col-lg-3 col-sm-6 col-12 search-dropdown d-flex align-items-center">
-            <select class="form-control border-0 default-select style-1 h-auto">
-                <option>Courses</option>
-                @foreach ($courses as $course)
-                    <option>{{ $course->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-xl-2 col-xxl-3 col-lg-3 col-sm-6 col-12 search-dropdown d-flex align-items-center">
-            <select class="form-control border-0 default-select style-1 h-auto">
-                <option>Quizzes</option>
-                <option>London</option>
-                <option>France</option>
-            </select>
-        </div>
-        <div class="col-xl-8 col-xxl-6 col-lg-6 col-12 d-md-flex job-title-search pe-0">
-            <div class="input-group search-area">
-                <input type="text" class="form-control h-auto" placeholder="search course title here...">
-                <span class="input-group-text">
-                    <a href="javascript:void(0)" class="btn btn-primary btn-rounded">Search<i class="flaticon-381-search-2 ms-2"></i></a>
-                </span>
+    <form action="{{ route('quiz.search') }}" method="POST">
+        @csrf
+        <div class="d-flex align-items-center flex-wrap search-job bg-white px-0 mb-4">
+            <div class="col-sm-6 col-12 search-dropdown d-flex align-items-center">
+                <select name="course_name" class="form-control border-0 default-select style-1 h-auto">
+                    <option value = "">Courses</option>
+                    @foreach ($courses as $course)
+                        <option value="{{ $course->name }}">{{ $course->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-xl-8 col-xxl-6 col-lg-6 col-12 d-md-flex job-title-search pe-0">
+                <div class="input-group search-area">
+                    <input type="text" class="form-control h-auto" name="search" placeholder="search quizzes title here...">
+                    <span class="input-group-text">
+                        <button type="submit" class="btn btn-primary btn-rounded">Search<i class="flaticon-381-search-2 ms-2"></i></button>
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
     <div class="row">
         <div class="col-xl-12">
             <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap">

@@ -14,19 +14,7 @@
                 </div>
             </div>
         </div>
-        <ul class="navbar-nav header-right">
-            <li class="nav-item dropdown notification_dropdown">
-                <a class="nav-link bell-link " href="javascript:void(0);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22.871" viewBox="0 0 24 22.871">
-                  <g  data-name="Layer 2" transform="translate(-2 -2)">
-                    <path id="Path_9" data-name="Path 9" d="M23.268,2H4.73A2.733,2.733,0,0,0,2,4.73V17.471A2.733,2.733,0,0,0,4.73,20.2a.911.911,0,0,1,.91.91v1.94a1.82,1.82,0,0,0,2.83,1.514l6.317-4.212a.9.9,0,0,1,.5-.153h4.436a2.742,2.742,0,0,0,2.633-2L25.9,5.462A2.735,2.735,0,0,0,23.268,2Zm.879,2.978-3.539,12.74a.915.915,0,0,1-.88.663H15.292a2.718,2.718,0,0,0-1.514.459L7.46,23.051v-1.94a2.733,2.733,0,0,0-2.73-2.73.911.911,0,0,1-.91-.91V4.73a.911.911,0,0,1,.91-.91H23.268a.914.914,0,0,1,.879,1.158Z" transform="translate(0 0)"/>
-                    <path id="Path_10" data-name="Path 10" d="M7.91,10.82h4.55a.91.91,0,1,0,0-1.82H7.91a.91.91,0,1,0,0,1.82Z" transform="translate(-0.45 -0.63)"/>
-                    <path id="Path_11" data-name="Path 11" d="M16.1,13H7.91a.91.91,0,1,0,0,1.82H16.1a.91.91,0,1,0,0-1.82Z" transform="translate(-0.45 -0.99)"/>
-                  </g>
-                </svg>
-                    <span class="badge light text-white bg-primary rounded-circle">76</span>
-                </a>
-            </li>	
+        <ul class="navbar-nav header-right">	
             <li class="nav-item dropdown notification_dropdown">
                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -179,7 +167,7 @@
             </li>
             <li class="nav-item dropdown header-profile">
                 <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
-                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
+                    <img src="{{ asset('images/profile/pic1.jpg') }}" width="20" alt=""/>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a href="./app-profile.html" class="dropdown-item ai-icon">

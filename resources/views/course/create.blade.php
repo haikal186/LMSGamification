@@ -2,24 +2,27 @@
 @section('content')
 <div class="container-fluid">
     <div class="d-flex align-items-center mb-4">
-        <h4 class="fs-20 font-w600 mb-0 me-auto">New Course</h4>
-        {{-- <div>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
-            <a href="javascript:void(0);" class="btn btn-primary btn-sm"><i class="fas fa-info"></i></a>
-        
-        </div> --}}
+        <h4 class="fs-20 font-w600 mb-0 me-auto">Create New Course</h4>
     </div>
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-                <form method="POST" action="{{ route('course.store') }}">
+                <form method="POST" action="{{ route('course.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-6  col-md-6 mb-4">
-                            <label  class="form-label font-w600">Course Name<span class="text-danger scale5 ms-2">*</span></label>
+                            <div class="col-xl-12  col-md-6 mb-4">
+                                <label  class="form-label font-w600">Course Name<span class="text-danger scale5 ms-2">*</span></label>
                                 <input type="text" name="name" class="form-control solid" placeholder="Course name" aria-label="name">
+                            </div>
+                            <div class="col-xl-12  col-md-6 mb-4">
+                                <label class="text-black font-w600 form-label">Upload Image<span class="required">*</span></label>
+                                <div class="input-group mb-9">
+                                    <span class="input-group-text">Upload</span>
+                                    <div class="form-file">
+                                        <input type="file" name="file" class="form-file-input form-control">
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-xl-12 mb-4">
                                 <label  class="form-label font-w600">Description:<span class="text-danger scale5 ms-2">*</span></label>
@@ -29,9 +32,7 @@
                     </div>
                     <div class="card-footer text-end">
                         <div>
-                            {{-- <a href="javascript:void(0);" class="btn btn-primary me-3">Close</a> --}}
-                            {{-- <a href="javascript:void(0);" class="btn btn-secondary">Submit</a> --}}
-                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <button type="submit" class="btn btn-secondary">Create</button>
 
                         </div>
                     </div>

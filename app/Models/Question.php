@@ -36,4 +36,9 @@ class Question extends Model
     {
         return $this->hasMany(UserAnswer::class);
     }
+
+    public function file()
+    {
+        return $this->morphOne(File::class, 'fileable');
+    }
 }

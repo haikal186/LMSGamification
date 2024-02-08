@@ -39,4 +39,8 @@ class Course extends Model
 
     }
 
+    public function file()
+    {
+        return $this->morphOne(File::class, 'fileable');
+    }
 }

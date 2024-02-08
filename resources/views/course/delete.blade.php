@@ -24,7 +24,8 @@
                     </div>
                     <div class="card-footer text-end">
                         <div>
-                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary me-3">Back</a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </div>
                     </div>
                 </form>

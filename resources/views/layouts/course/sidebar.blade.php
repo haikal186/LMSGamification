@@ -1,11 +1,11 @@
 <div class="dropdown header-profile2 ">
     <a class="nav-link " href="javascript:void(0);"  role="button" data-bs-toggle="dropdown">
         <div class="header-info2 d-flex align-items-center">
-            <img src="images/profile/pic1.jpg" alt=""/>
+            <img src="{{ asset('images/profile/pic1.jpg') }}" alt=""/>
             <div class="d-flex align-items-center sidebar-info">
                 <div>
-                    <span class="font-w400 d-block">Franklin Jr</span>
-                    <small class="text-end font-w400">Superadmin</small>
+                    <span class="font-w400 d-block">{{ $short_name }}</span>
+                    <small class="text-end font-w400">{{ ucfirst($role) }}</small>
                 </div>	
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -28,8 +28,14 @@
     </div>
 </div>
 <ul class="metismenu" id="menu">
-    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+    <li>
+        <a href="#" class="" href="javascript:void()" aria-expanded="false">
             <i class="flaticon-025-dashboard"></i>
+            <span class="nav-text">Dashboard</span>
+        </a>
+    </li>
+    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+        <i class="flaticon-093-waving"></i>
             <span class="nav-text">Course</span>
         </a>
         <ul aria-expanded="false">

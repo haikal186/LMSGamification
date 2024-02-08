@@ -5,21 +5,14 @@
     <div class="d-flex align-items-center flex-wrap search-job bg-white px-0 mb-4">
         <div class="col-xl-2 col-xxl-3 col-lg-3 col-sm-6 col-12 search-dropdown d-flex align-items-center">
             <select class="form-control border-0 default-select style-1 h-auto">
-                <option>Category</option>
+                <option>Courses</option>
                 <option>London</option>
                 <option>France</option>
             </select>
         </div>
-        <div class="col-xl-2 col-xxl-3 col-lg-3 col-sm-6 col-12 search-dropdown d-flex align-items-center">
-            <select class="form-control border-0 default-select style-1 h-auto">
-                <option>Category</option>
-                <option>London</option>
-                <option>France</option>
-            </select>
-        </div>
-        <div class="col-xl-8 col-xxl-6 col-lg-6 col-12 d-md-flex job-title-search pe-0">
+        <div class="col-xl-10 col-xxl-9 col-lg-9 col-12 d-md-flex job-title-search pe-0">
             <div class="input-group search-area">
-                <input type="text" class="form-control h-auto" placeholder="search job title here...">
+                <input type="text" class="form-control h-auto" placeholder="search course title here...">
                 <span class="input-group-text">
                     <a href="javascript:void(0)" class="btn btn-primary btn-rounded">Search<i class="flaticon-381-search-2 ms-2"></i></a>
                 </span>
@@ -30,30 +23,8 @@
         <div class="col-xl-12">
             <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap">
                 <div class="mb-4">
-                    <h5>Showing {{ $enrolls->count(); }} of {{ $courses->count() }} course results</h5>
+                    <h5>Showing {{ $enrolls->count(); }} of 1 course results</h5>
                     <span>Based on your preferences</span>
-                </div>
-                <div class="d-flex mb-4">
-                    <div class="default-tab job-tabs">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#Boxed">
-                                    <i class="fas fa-th-large"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#List1">
-                                    <i class="fas fa-list"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <select class="default-select dashboard-select border-0 bg-transparent">
-                            <option data-display="newest">newest</option>
-                            <option value="2">oldest</option>
-                        </select>
-                    </div>
                 </div>
             </div>
             <div class="tab-content">
@@ -78,11 +49,10 @@
                                                 </svg>
                                             </span>
                                             <h4 class="fs-20 mb-0">{{ $enroll->course->name }}</h4>
-                                            <span class="text-primary mb-3 d-block">Bubbles Studios</span>
+                                            <span class="text-primary mb-3 d-block">7 Students</span>
                                         </div>
                                         <div>
                                             <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Enroll Date : {{ $enroll->enroll_date }}</span>
-                                            <span><i class="fas fa-comments-dollar me-2"></i>Total Student: 100</span>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +62,7 @@
                     </div>
                     <div class="d-flex justify-content-between mb-4"> <!-- Added this container -->
                         <div>
-                            <h5 class="mb-0">Showing {{ $enrolls->count(); }} of {{ $courses->count() }} Data</h5>
+                            <h5 class="mb-0">Showing {{ $enrolls->count(); }} of 1 Data</h5>
                         </div>
                         <nav>
                             <ul class="pagination pagination-circle">
@@ -100,9 +70,6 @@
                                     <a class="page-link" href="javascript:void(0)">Prev</a>
                                 </li>
                                 <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                                {{-- <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li> --}}
                                 <li class="page-item page-indicator job-search-page">
                                     <a class="page-link" href="javascript:void(0)">Next</a>
                                 </li>

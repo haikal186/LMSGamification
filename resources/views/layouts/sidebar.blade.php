@@ -1,11 +1,11 @@
 <div class="dropdown header-profile2 ">
     <a class="nav-link " href="javascript:void(0);"  role="button" data-bs-toggle="dropdown">
         <div class="header-info2 d-flex align-items-center">
-            <img src="images/profile/pic1.jpg" alt=""/>
+            <img src="{{ asset('images/profile/pic1.jpg') }}" alt="">
             <div class="d-flex align-items-center sidebar-info">
                 <div>
-                    <span class="font-w400 d-block">Franklin Jr</span>
-                    <small class="text-end font-w400">Superadmin</small>
+                    <span class="font-w400 d-block">{{ $short_name }}</span>
+                    <small class="text-end font-w400">{{ ucfirst($role) }}</small>
                 </div>	
                 <i class="fas fa-chevron-down"></i>
             </div>
@@ -29,19 +29,19 @@
 </div>
 <ul class="metismenu" id="menu">
     <li>
-        <a href="#" class="" href="javascript:void()" aria-expanded="false">
-            <i class="flaticon-025-dashboar[]d"></i>
+        <a href="{{ route('home') }}" class="" href="javascript:void()" aria-expanded="false">
+            <i class="flaticon-025-dashboard"></i>
             <span class="nav-text">Dashboard</span>
         </a>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-            <i class="flaticon-025-dashboar[]d"></i>
+            <i class="flaticon-050-info"></i>
             <span class="nav-text">Profile</span>
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('profile.index') }}">List Instructors</a></li>
             <li><a href="{{ route('student.index') }}">List Students</a></li>
-            <li><a href="{{ route('profile.detail', ['id' => auth()->user()->id]) }}">Your Profile</a></li>
+            <li><a href="{{ route('profile.show', ['user_id' => auth()->user()->id]) }}">Your Profile</a></li>
         </ul>
 
     </li>
@@ -63,7 +63,7 @@
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-        <i class="flaticon-050-info"></i>
+            <i class="flaticon-072-printer"></i>
             <span class="nav-text">Assesstment</span>
         </a>
         <ul aria-expanded="false">
@@ -76,16 +76,7 @@
         <span class="nav-text">Overview</span>
     </a>
     <ul aria-expanded="false">
-        <li><a href="./form-element.html">Course Overview</a></li>
         <li><a href="{{ route('achievement.index') }}">Achievement</a></li>
     </ul>
     </li>
 </ul>
-{{-- <div class="plus-box">
-    <p class="fs-14 font-w600 mb-2">Let Jobick Managed<br>Your Resume Easily<br></p>
-    <p>Lorem ipsum dolor sit amet</p>
-</div>
-<div class="copyright">
-    <p><strong>Jobick Job Admin</strong> © 2021 All Rights Reserved</p>
-    <p class="fs-12">Made with <span class="heart"></span> by DexignLabs</p>
-</div> --}}

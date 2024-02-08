@@ -4,16 +4,11 @@
 <div class="container-fluid">
     <div class="d-flex align-items-center mb-4">
         <h4 class="fs-20 font-w600 mb-0 me-auto">{{ $course->name }}</h4>
-        <div>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"> <i class="fas fa-envelope"></i></a>
-            <a href="javascript:void(0);" class="btn btn-secondary btn-sm me-3"><i class="fas fa-phone-alt"></i></a>
-            <a href="javascript:void(0);" class="btn btn-primary btn-sm"><i class="fas fa-info"></i></a>
-        </div>
     </div>
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-                <form method="POST" action="{{ route('course.update', $course->id) }}">
+                <form method="POST" action="{{ route('course.update', $course->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT') {{-- Use PUT method for updates --}}
                     <div class="card-body">
@@ -32,6 +27,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mb-4">
+                            <div class="col-xl-6 col-md-6">
+                                <label class="text-black font-w600 form-label">Upload Image<span class="required">*</span></label>
+                                <div class="input-group mb-9">
+                                    <span class="input-group-text">Upload</span>
+                                    <div class="form-file">
+                                        <input type="file" name="file" value="{{ $file->original_name }}"class="form-file-input form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-xl-12">
                                 <label class="form-label font-w600">Description:<span class="text-danger scale5 ms-2">*</span></label>
@@ -42,7 +48,7 @@
                     <div class="card-footer text-end">
                         <div>
                             <a href="{{ route('course.show', $course->id) }}" class="btn btn-primary me-3">Back</a>
-                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <button type="submit" class="btn btn-secondary">Update</button>
                         </div>
                     </div>
                 </form>

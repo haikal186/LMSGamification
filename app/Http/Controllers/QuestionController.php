@@ -29,17 +29,17 @@ class QuestionController extends Controller
         ]);
         
         // Handle File Upload
-        if($request->hasFile('file')) {
-            
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
             $originalName = $file->getClientOriginalName();
             $fileName = pathinfo($originalName, PATHINFO_FILENAME);
             $extension = $file->getClientOriginalExtension();
             $storedFileName = $fileName . '_' . time() . '.' . $extension;
-
+    
             // Store the file in storage/app/public/uploads directory
             $file->storeAs('public/uploads', $storedFileName);
-
+    
+            // Create the file associated with the question
             $question->file()->create([
                 'original_name' => $originalName,
                 'name' => $storedFileName,
@@ -47,6 +47,7 @@ class QuestionController extends Controller
                 'file_type' => $file->getClientMimeType(),
             ]);
         }
+    
 
         $answerNames = $request->input('answer_name');
         $isTrueValues = $request->input('is_true');
@@ -76,25 +77,6 @@ class QuestionController extends Controller
         return view('question.show', compact('questions','question_find','quiz','question','file'));
 
     }
-
-    public function file()
-    {
-        return $this->morphOne(File::class, 'fileable');
-    }
-
-    public function showImage($filename)
-    {
-        $path = storage_path('app/public/uploads/' . $filename);
-
-        if (!Storage::exists($path)) {
-            abort(404);
-        }
-
-        $file = Storage::get($path);
-        $type = Storage::mimeType($path);
-
-        return response($file)->header('Content-Type', $type);
-    }
     
     public function update(Request $request, $question_id)
     {
@@ -102,6 +84,30 @@ class QuestionController extends Controller
         $question->update([
             'name' => $request->question_name,
         ]);
+
+        if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+            $originalName = $file->getClientOriginalName();
+            $fileName = pathinfo($originalName, PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $storedFileName = $fileName . '_' . time() . '.' . $extension;
+
+            $file->storeAs('public/uploads', $storedFileName);
+            
+
+            if ($question->file) {
+                Storage::delete('public/uploads/' . $question->file->name);
+                $question->file()->delete();
+            }
+
+            $question->file()->create([
+                'original_name' => $originalName,
+                'name' => $storedFileName,
+                'file_path' => 'http://127.0.0.1:8000/storage/uploads/' . $storedFileName,
+                'file_type' => $file->getClientMimeType(),
+            ]);
+        }
 
         $answerNames = $request->input('answer_name');
         $isTrueValues = $request->input('is_true');

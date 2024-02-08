@@ -3,9 +3,9 @@
 @section('content')
 <div class="container-fluid">
     <div class="d-flex align-items-center mb-4 flex-wrap">
-        <h4 class="fs-20 font-w600  me-auto">Profile List</h4>
+        <h4 class="fs-20 font-w600  me-auto">Student List</h4>
         <div>
-            <a href="#" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Profile</a>        
+            <a href="#" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Student</a>        
         </div>
     </div>
     <div class="row">
@@ -26,10 +26,10 @@
                         {{-- @foreach ($users as $key => $user) --}}
                         <tr>
                             <td>1</td>
-                            <td>Teacher</td>                            
-                            <td>nama</td>
-                            <td>email</td>
-                            <td>masa</td>
+                            <td>Student</td>                            
+                            <td>Hariz Wildan Bin Fauzi</td>
+                            <td>wildan@gmail.com</td>
+                            <td></td>
                             <td>
                                 <div class="action-buttons d-flex">
                                     <a href="javascript:void(0);" class="btn btn-success light mr-2">

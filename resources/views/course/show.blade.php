@@ -5,22 +5,25 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="profile-back">
-                <img src="images/profile1.jpg" alt="">
+                @if($file && $file->file_path)
+                    <img src="{{ asset($file->file_path) }}" alt="">
+                @else
+                    <img src="{{ asset('images/profile1.jpg') }}" alt="">
+                @endif
                 <form method="POST" action="{{ route('enroll.store', $course->id) }}">
                     @csrf
                     <div class="social-btn">
-                        <a href="javascript:void(0);" class="btn btn-light social">245 Following</a>
-                        <a href="javascript:void(0);" class="btn btn-light social">872 Followers</a>
+                        <a href="javascript:void(0);" class="btn btn-light social">3 Students</a>
                         <button type="submit" class="btn btn-primary">Take Course</button>
                     </div>
                 </form>
             </div>
             <div class="profile-pic d-flex">
-                <img src="images/profile/pic1.jpg" alt="">
+                <img src="{{ asset('images/profile/pic1.jpg') }}" alt="">
                 <div class="profile-info2">
                     <h2 class="mb-0">{{ $course->name }}</h2>
-                    <h4>Lecturer Name</h4>
-                    <span class="d-block"><i class="fas fa-map-marker-alt me-2"></i>Medan, Sumatera Utara - ID</span>
+                    <h4>Muhammad Haikal Bin Abdul Hadi</h4>
+                    <span class="d-block">haikal@gmail.com</span>
                 </div>
             </div>
         </div>
@@ -36,11 +39,9 @@
                 </div>
                 <div class="card-footer d-flex flex-wrap justify-content-between">
                     <div class="mb-md-2 mb-3">
-                        <span class="d-block mb-1"><i class="fas fa-circle me-2"></i>Currently Working at  <strong>Abcd Pvt Ltd</strong></span>
-                        <span><i class="fas fa-circle me-2"></i>3 Yrs Of Working Experience in   <strong>Abcd Pvt Ltd</strong></span>
                     </div>
                     <div>
-                        <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning btn-md me-2 mb-2"><i class="fas fa-share-alt me-2"></i>Edit Profile</a>
+                        <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning btn-md me-2 mb-2"><i class="fas fa-share-alt me-2"></i>Edit Course</a>
                         <a href="{{ route('course.delete', $course->id) }}" class="btn btn-primary btn-md me-2 mb-2"><i class="fas fa-download me-2"></i>Delete Course</a>
                     </div>
                 </div>
@@ -52,20 +53,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-header border-0 pb-0">
-                    <h4 class="fs-20 font-w600">Quiz</h4>
-                    <div class="card-action coin-tabs">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link " data-bs-toggle="tab" href="#Daily" role="tab">Daily</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " data-bs-toggle="tab" href="#weekly" role="tab" >Weekly</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#monthly" role="tab" >Monthly</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <h4 class="fs-20 font-w600">Quiz List</h4>
                 </div>
                 <div class="row mt-4">
                     <div class="row">
@@ -86,7 +74,7 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $quiz->name }}</td>
-                                            <td class="wspace-no">35 students</td>
+                                            <td class="wspace-no">2 students</td>
                                             <td>{{ $quiz->created_at }}</td>
                                             <td>
                                                 <div class="action-buttons d-flex">
@@ -123,20 +111,7 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-header border-0 pb-0">
-                    <h4 class="fs-20 font-w600">Assignment</h4>
-                    <div class="card-action coin-tabs">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link " data-bs-toggle="tab" href="#Daily" role="tab">Daily</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " data-bs-toggle="tab" href="#weekly" role="tab" >Weekly</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#monthly" role="tab" >Monthly</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <h4 class="fs-20 font-w600">Assignment List</h4>
                 </div>
                 <div class="row mt-4">
                     <div class="row">
@@ -164,15 +139,6 @@
                                                     <a href="{{ route('assignment.show', $assignment->id) }}" class="btn btn-success light mr-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
                                                     </a>
-                                                    {{-- <a href="javascript:void(0);" class="btn btn-secondary light mr-2">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
-                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                <rect x="0" y="0" width="24" height="24"></rect>
-                                                                <path d="M8,17.9148182 L8,5.96685884 C8,5.56391781 8.16211443,5.17792052 8.44982609,4.89581508 L10.965708,2.42895648 C11.5426798,1.86322723 12.4640974,1.85620921 13.0496196,2.41308426 L15.5337377,4.77566479 C15.8314604,5.0588212 16,5.45170806 16,5.86258077 L16,17.9148182 C16,18.7432453 15.3284271,19.4148182 14.5,19.4148182 L9.5,19.4148182 C8.67157288,19.4148182 8,18.7432453 8,17.9148182 Z" fill="#000000" fill-rule="nonzero" transform="translate(12.000000, 10.707409) rotate(-135.000000) translate(-12.000000, -10.707409) "></path>
-                                                                <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"></rect>
-                                                            </g>
-                                                        </svg>
-                                                    </a> --}}
                                                     <a href="javascript:void(0);" class="btn btn-danger light">
                                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -209,7 +175,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="comment-form" method="POST" action="{{ route('quiz.store', $course->id) }}">
+                    <form class="comment-form" method="POST" action="{{ route('quiz.store', $course->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="row"> 
                             <div class="col-lg-12">
@@ -224,7 +190,7 @@
                                     <div class="input-group mb-9">
                                         <span class="input-group-text">Upload</span>
                                         <div class="form-file">
-                                            <input type="file" class="form-file-input form-control">
+                                            <input type="file" class="form-file-input form-control" name="file">
                                         </div>
                                     </div>
                                 </div>

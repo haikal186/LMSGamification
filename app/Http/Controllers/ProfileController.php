@@ -30,24 +30,40 @@ class ProfileController extends Controller
         return to_route('profile.index');
     }
 
-    public function show(string $id)
+    public function edit(Request $request, $user_id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($user_id);
 
-        return view('profile.show',compact('user'));
+        return view('profile.edit',compact('user'));
     }
 
-    public function destroy(string $id)
+    public function update(Request $request, $user_id)
     {
-        $user = User::findOrFail($id);
+        $user = User::findorFail($user_id);
+        
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return view('profile.index');
+
+    }
+
+    public function destroy(Request $request, $user_id)
+    {
+        $user = User::findOrFail($user_id);
         $user->delete();
         
         return redirect()->route('profile.index')->with('success', 'User deleted successfully');
     }
 
-    public function detail($id)
+    public function show($user_id)
     {
-        $user = User::findOrFail($id);
-        return view('profile.detail', compact('user'));
+        $user = User::findOrFail($user_id);
+
+        $role = $user->hasRole;
+        return view('profile.show', compact('user','role'));
     }
 }

@@ -29,7 +29,7 @@ Route::get('/register', function () { return view('auth.register'); })->name('re
 
 Auth::routes();
 
-Route::middleware(['auth']) -> group(function() {
+Route::middleware(['auth', 'user.data'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -37,9 +37,10 @@ Route::middleware(['auth']) -> group(function() {
         Route::get('/', 'index')->name('profile.index');
         Route::get('/create', 'create')->name('profile.create');
         Route::post('/store', 'store')->name('profile.store');
-        Route::get('/show/{id}','show')->name('profile.show');
-        Route::delete('/destroy/{id}','destroy')->name('profile.destroy');
-        Route::get('/detail/{id}', 'detail')->name('profile.detail');
+        Route::get('/edit/{user_id}','edit')->name('profile.edit');
+        Route::put('/update/{user_id}','update')->name('profile.update');
+        Route::delete('/destroy/{user_id}','destroy')->name('profile.destroy');
+        Route::get('/show/{user_id}', 'show')->name('profile.show');
     });
 
     Route::prefix('student')->controller(StudentController::class)->group(function () {
@@ -55,12 +56,11 @@ Route::middleware(['auth']) -> group(function() {
         Route::post('/store', 'store')->name('course.store');
         Route::get('/show/{course_id}', 'show')->name('course.show');
         Route::get('/edit/{id}','edit')->name('course.edit');
-        Route::put('/update/{id}', 'update')->name('course.update');
+        Route::put('/update/{course_id}', 'update')->name('course.update');
         Route::get('/lesson', 'lesson')->name('course.lesson');
         Route::get('/delete/{course_id}','delete')->name('course.delete');
         Route::delete('/destroy/{course_id}','destroy')->name('course.destroy');
 
-        
     });
 
     Route::prefix('assignment')->controller(AssignmentController::class)->group(function () {
@@ -79,6 +79,8 @@ Route::middleware(['auth']) -> group(function() {
         Route::put('/update/{quiz_id}', 'update')->name('quiz.update');
         Route::get('/detail/{quiz_id}', 'detail')->name('quiz.detail');
         Route::get('/create/{quiz_id}', 'create')->name('quiz.create');
+        Route::post('/search', 'search')->name('quiz.search');
+
     });
     
     Route::prefix('question')->controller(QuestionController::class)->group(function () {
@@ -86,7 +88,8 @@ Route::middleware(['auth']) -> group(function() {
         Route::get('/create/{quiz_id}', 'create')->name('question.create');
         Route::post('/store/{quiz_id}', 'store')->name('question.store');
         Route::get('/show/{question_id}', 'show')->name('question.show');
-        Route::put('/update/{question_id}', 'update')->name('question.update');        
+        Route::put('/update/{question_id}', 'update')->name('question.update'); 
+        Route::get('/image/{filename}', 'showImage')->name('question.image.show');       
     });
 
     Route::prefix('user_answer')->controller(UserAnswerController::class)->group(function () {

@@ -18,7 +18,11 @@
             <div class="row justify-content-center h-100 align-items-center">
                 <div class="col-xl-6 ">
                     <div class="card ">
-                        <img class="card-img-top img-fluid" src="{{ asset('/images/card/2.png') }}" alt="Card image cap">
+                        @if ($file && $file->file_path)
+                            <img class="card-img-top img-fluid" src="{{ asset($file->file_path) }}" alt="Question Image">
+                        @else
+                            <img class="card-img-top img-fluid" src="{{ asset('/images/card/2.png') }}" alt="Card image cap">
+                        @endif
                         <div class="card-body">
                             <div class="col-lg-12">
                                 <div class="mb-3">
@@ -26,7 +30,7 @@
                                     <div class="input-group mb-9">
                                         <span class="input-group-text">Upload</span>
                                         <div class="form-file">
-                                            <input type="file" class="form-file-input form-control">
+                                            <input name="file" type="file" class="form-file-input form-control">
                                         </div>
                                     </div>
                                 </div>
