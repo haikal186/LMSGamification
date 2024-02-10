@@ -31,36 +31,38 @@
                 <div class="tab-pane fade show active" id="Boxed" role="tabpanel">
                     <div class="row">
                         @foreach ($enrolls as $enroll)
-                        <div class="col-xl-3 col-xxl-4 col-md-4 col-sm-6">
-                            <a href="{{ route('enroll.show', $enroll->course_id) }}">
-                                <div class="card">
-                                    <div class="jobs2 card-body">
-                                        <div class="text-center">
-                                            <span>
-                                                <svg class="mb-2" xmlns="http://www.w3.org/2000/svg" width="71" height="71" viewBox="0 0 71 71">
-                                                    <g transform="translate(-457 -443)">
-                                                        <rect width="71" height="71" rx="12" transform="translate(457 443)" fill="#c5c5c5"></rect>
-                                                        <g transform="translate(457 443)">
-                                                            <rect data-name="placeholder" width="71" height="71" rx="12" fill="#2769ee"></rect>
-                                                            <circle data-name="Ellipse 12" cx="18" cy="18" r="18" transform="translate(15 20)" fill="#fff"></circle>
-                                                            <circle data-name="Ellipse 11" cx="11" cy="11" r="11" transform="translate(36 15)" fill="#ffe70c" style="mix-blend-mode: multiply;isolation: isolate"></circle>
+                            <div class="col-xl-3 col-xxl-4 col-md-4 col-sm-6">
+                                <a href="{{ route('enroll.show', $enroll->course->id) }}">
+                                    <div class="card">
+                                        <div class="jobs2 card-body">
+                                            <div class="text-center">
+                                                <span>
+                                                    <svg class="mb-2" xmlns="http://www.w3.org/2000/svg" width="71" height="71" viewBox="0 0 71 71">
+                                                        <g transform="translate(-457 -443)">
+                                                            <rect width="71" height="71" rx="12" transform="translate(457 443)" fill="#c5c5c5"></rect>
+                                                            <g transform="translate(457 443)">
+                                                                <rect data-name="placeholder" width="71" height="71" rx="12" fill="#2769ee"></rect>
+                                                                <circle data-name="Ellipse 12" cx="18" cy="18" r="18" transform="translate(15 20)" fill="#fff"></circle>
+                                                                <circle data-name="Ellipse 11" cx="11" cy="11" r="11" transform="translate(36 15)" fill="#ffe70c" style="mix-blend-mode: multiply;isolation: isolate"></circle>
+                                                            </g>
                                                         </g>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            <h4 class="fs-20 mb-0">{{ $enroll->course->name }}</h4>
-                                            <span class="text-primary mb-3 d-block">7 Students</span>
-                                        </div>
-                                        <div>
-                                            <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Enroll Date : {{ $enroll->enroll_date }}</span>
+                                                    </svg>
+                                                </span>
+                                                <h4 class="fs-20 mb-0">{{ $enroll->course->name }}</h4>
+                                                <span class="text-primary mb-3 d-block">{{ $enroll->course->enrolls->count() }} Students</span>
+                                            </div>
+                                            <div>
+                                                <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>
+                                                    Enroll Date : {{ $enroll->course->enrolls->first() ? $enroll->course->enrolls->first()->enroll_date : 'N/A' }}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
                         @endforeach
                     </div>
-                    <div class="d-flex justify-content-between mb-4"> <!-- Added this container -->
+                    <div class="d-flex justify-content-between mb-4"> 
                         <div>
                             <h5 class="mb-0">Showing {{ $enrolls->count(); }} of 1 Data</h5>
                         </div>
