@@ -30,28 +30,6 @@
                     <h5>Showing {{ $quizzes->count() }} of {{ $totalQuiz }} quizzes results</h5>
                     <span>Based on your preferences</span>
                 </div>
-                <div class="d-flex mb-4">
-                    <div class="default-tab job-tabs">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#Boxed">
-                                    <i class="fas fa-th-large"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#List1">
-                                    <i class="fas fa-list"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <select class="default-select dashboard-select border-0 bg-transparent">
-                            <option data-display="newest">newest</option>
-                            <option value="2">oldest</option>
-                        </select>
-                    </div>
-                </div>
             </div>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="Boxed" role="tabpanel">
