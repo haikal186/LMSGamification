@@ -18,11 +18,15 @@ class CourseSeeder extends Seeder
                 'id'          => 1,
                 'name'        => 'Laravel',
                 'description' => 'Learning laravel basic CRUD',
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
-                'id'   => 2,
-                'name' => 'Java',
+                'id'          => 2,
+                'name'        => 'Java',
                 'description' => 'Architecture of Java',
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
         ]);
     }
