@@ -25,6 +25,8 @@ class HomeController extends Controller
     {
         $user = Auth()->user();
 
-        return view('home');
+        $role = $user -> hasRole -> name;
+
+        return view('home', compact('user', 'role'));
     }
 }
