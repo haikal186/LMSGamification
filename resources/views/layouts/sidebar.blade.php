@@ -5,8 +5,8 @@
             <div class="d-flex align-items-center sidebar-info">
                 <div>
                     <span class="font-w400 d-block">{{ $short_name }}</span>
-                    <small class="text-end font-w400">{{ ucfirst($role) }}</small>
-                </div>	
+                    <small class="text-end font-w400">{{ $role }}</small>
+                </div>
                 <i class="fas fa-chevron-down"></i>
             </div>
             
@@ -50,16 +50,11 @@
             <span class="nav-text">Course</span>
         </a>
         <ul aria-expanded="false">
+            {{-- @if($role == 'lecturer') --}}
             <li><a href="{{ route('course.index') }}">Course Lists</a></li>
-            {{-- @if(auth()->user()->hasRole->name == 'lecturer') --}}
             <li><a href="{{ route('course.create') }}">Create Course</a></li>
             {{-- @endif --}}
             <li><a href="{{ route('enroll.index') }}">Your Course</a></li>
-            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Add Content</a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('course.lesson') }}">Add Lesson</a></li>
-                </ul>
-            </li>
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
