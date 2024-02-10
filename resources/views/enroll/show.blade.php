@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="d-flex align-items-center mb-4">
-            <h4 class="fs-20 font-w600 mb-0 me-auto">Course Summary</h4>
+            <h4 class="fs-20 font-w600 mb-0 me-auto">Course Details</h4>
         </div>
         <div class="col-xl-12">
             <div class="card">
@@ -48,7 +48,7 @@
                             <div class="nav flex-column nav-pills mb-3">
                                 <a href="#v-pills-home" data-bs-toggle="pill" class="nav-link active show">Course Description</a>
                                 <a href="#v-pills-profile" data-bs-toggle="pill" class="nav-link">Course Learning Outcomes</a>
-                                <a href="#v-pills-messages" data-bs-toggle="pill" class="nav-link">Course Syllabus</a>
+                                <a href="#v-pills-messages" data-bs-toggle="pill" class="nav-link">Course Content</a>
                             </div>
                         </div>
                         <div class="col-sm-9">
@@ -65,10 +65,41 @@
                                 </div>
                                 <div id="v-pills-messages" class="tab-pane fade">
                                     <p>
-                                        Course Syllabus:
+                                        <b>Course Content</b>
                                     </p>
-                                    <div>
-                                        1.
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="table-responsive">
+                                                <table class="table display mb-4 dataTablesCard job-table table-responsive-xl card-table" id="example5">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>File Name</th>
+                                                            <th>Date Uploaded</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if ($course->file)
+                                                            @foreach ($course->file->where('file_type', 'application/pdf') as $key => $file)
+                                                                <tr>
+                                                                    <td>{{ $key + 1 }}</td>
+                                                                    <td><a href="{{ $file->file_path }}" target="_blank">{{ $file->original_name }}</a></td>                                               
+                                                                    <td>{{ $file->created_at->format('d-m-Y') }}</td>
+                                                                    <td>
+                                                                        <div class="action-buttons d-flex">
+                                                                            <a href="{{ $file->file_path }}" class="btn btn-success" download>
+                                                                                <i class="fas fa-download"></i> Download
+                                                                            </a>
+                                                                        </div>   
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        @endif
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,4 +109,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection 
