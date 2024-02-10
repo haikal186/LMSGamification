@@ -11,6 +11,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,14 @@ use App\Http\Controllers\AchievementController;
 
 Route::get('/', function () { return view('auth.login'); }) -> name('login');
 
-Route::get('/register', function () { return view('auth.register'); })->name('register');
+Route::prefix('register')->controller(RegisterController::class)->group(function() {
+    Route::get('create-user', 'store')->name('user.create');
+    Route::post('store', 'create')->name('user.store');
+});
 
 Auth::routes();
 
-Route::middleware(['auth', 'user.data'])->group(function () {
+Route::middleware(['isAuthenticated'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -55,11 +59,13 @@ Route::middleware(['auth', 'user.data'])->group(function () {
         Route::get('/create', 'create')->name('course.create');
         Route::post('/store', 'store')->name('course.store');
         Route::get('/show/{course_id}', 'show')->name('course.show');
-        Route::get('/edit/{id}','edit')->name('course.edit');
+        Route::get('/edit/{course_id}','edit')->name('course.edit');
         Route::put('/update/{course_id}', 'update')->name('course.update');
         Route::get('/lesson', 'lesson')->name('course.lesson');
         Route::get('/delete/{course_id}','delete')->name('course.delete');
         Route::delete('/destroy/{course_id}','destroy')->name('course.destroy');
+        Route::post('/storeFile/{course_id}', 'storeFile')->name('course.storeFile');
+        Route::delete('/destroyFile/{course_id}', 'destroyFile')->name('course.destroyFile');
 
     });
 
