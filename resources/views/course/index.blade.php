@@ -57,7 +57,7 @@
                                                 </svg>
                                             </span>
                                             <h4 class="fs-20 mb-0">{{ $course->name }}</h4>
-                                            <span class="text-primary mb-3 d-block">3 Students</span>
+                                            <span class="text-primary mb-3 d-block">{{ $course->enrolls->count() }} Students</span>
                                         </div>
                                         <div>
                                             <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Created At: {{ optional($course->created_at)->format('d-m-Y') }}</span>
