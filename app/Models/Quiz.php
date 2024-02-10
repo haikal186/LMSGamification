@@ -35,7 +35,6 @@ class Quiz extends Model
         return $this->hasMany(Score::class);
     }
 
-
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id');
