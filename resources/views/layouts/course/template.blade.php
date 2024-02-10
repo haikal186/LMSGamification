@@ -14,7 +14,7 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- PAGE TITLE HERE -->
-	<title>Jobick Job Admin</title>
+	<title>EduGamify</title>
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -49,9 +49,9 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+			<a href="{{ route('home') }}" class="brand-logo">
 				<img src="{{ asset('images/logo_lms.png') }}" alt="" width="200.074" height="65.771">
-            </a>
+			</a>
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
