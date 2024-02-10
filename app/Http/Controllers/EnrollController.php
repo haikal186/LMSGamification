@@ -15,10 +15,9 @@ class EnrollController extends Controller
     public function index()
     {
         $user = auth()->user(); 
-        $enrolls = $user->enrolls()->get();
-        $courses = Course::all(); 
-       
-        return view('enroll.index', compact('enrolls','courses'));
+        
+        $enrolls = $user->enrolls()->with('course')->get(); 
+        return view('enroll.index', compact('enrolls'));
     }
 
     public function store(Request $request, $course_id)
@@ -26,11 +25,8 @@ class EnrollController extends Controller
         $courses = Course::findOrFail($course_id);
         $user = auth()->user(); 
 
-        $is_enrolled = Enroll::where('user_id', $user->id)
-                        ->where('course_id', $course_id)
-                        ->exists();
-
-        if ($is_enrolled) {
+        // Check if the user is already enrolled in the course
+        if ($user->enrolls()->where('course_id', $course_id)->exists()) {
             return redirect()->route('enroll.index');
         }
     
@@ -40,14 +36,15 @@ class EnrollController extends Controller
             'enroll_date' => Carbon::now(),
         ]);
     
-        return view('enroll.index', compact('enrolls','courses'));
+        return redirect()->route('enroll.index');
     }
 
     public function show(Request $request, $course_id)
     {
         $course = Course::findOrFail($course_id);
+        $file   = $course->file;
 
-        return view('enroll.show',compact('course'));
+        return view('enroll.show',compact('course','file'));
     }
 
     public function quiz(Request $request, $course_id)
