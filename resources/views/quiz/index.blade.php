@@ -101,25 +101,6 @@
                         <!-- Modal End -->
                         @endforeach
                     </div>
-                    {{-- <div class="d-flex justify-content-between mb-4"> <!-- Added this container -->
-                        <div>
-                            <h5 class="mb-0">Showing {{ $quiz->count() }} of {{ $totalQuiz }} data</h5>
-                        </div>
-                        <nav>
-                            <ul class="pagination pagination-circle">
-                                <li class="page-item page-indicator job-search-page">
-                                    <a class="page-link" href="javascript:void(0)">Prev</a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
-                                <li class="page-item page-indicator job-search-page">
-                                    <a class="page-link" href="javascript:void(0)">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -143,9 +124,6 @@
                     </p>
                     <div class="card bg-light">
                         <div class="card-body mb-0">
-                            {{-- @foreach($course->quizzes->questions as $key => $question)
-                                <p class="card-text">{{ $question }}</p>
-                            @endforeach --}}
                         </div>
                     </div>
                     <p class="card-text">
