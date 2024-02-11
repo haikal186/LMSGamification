@@ -14,4 +14,13 @@ class ProfileController extends Controller
 
         return view('profile.show', compact('user','file'));
     }
+
+    public function edit(Request $request, $user_id)
+    {
+        $user = User::findOrFail($user_id);
+
+        return view('profile.edit',compact('user'));
+    }
+
+    
 }
