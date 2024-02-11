@@ -28,7 +28,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn btn-primary me-3 btn-sm float-end">Remove</a>
                             </div> 
                         </div>
                     </div>
