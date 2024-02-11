@@ -41,7 +41,7 @@
                         <div class="mb-md-2 mb-3">
                         </div>
                         <div>
-                            <a href="{{ route('instructor.edit', $user->id) }}" class="btn btn-warning btn-md me-2 mb-2">Edit Profile</a>
+                            <a href="{{ route('profile.edit', $user->id) }}" class="btn btn-warning btn-md me-2 mb-2">Edit Profile</a>
                         </div>
                     </div>
                 </div>
