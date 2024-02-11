@@ -25,13 +25,9 @@ class IsAuthenticated
             }
 
             $role = $user->hasRole->name;
+            $file = $user->files; 
 
-            $file = $user->files->first();
-
-            if ($file) {
-                view()->share('file', $file);
-            }
-
+            view()->share('file', $file);
             view()->share('short_name', $short_name);
             view()->share('role', $role);
 
