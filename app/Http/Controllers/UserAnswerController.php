@@ -25,6 +25,8 @@ class UserAnswerController extends Controller
         $max_question_id = $question->quiz->questions()->max('id');
         $is_last_question = ($question_id == $max_question_id);
 
+        $file_question = $question->file;
+
         UserAnswer::updateOrCreate(
             [
                 'user_id'     => $user->id,
@@ -38,7 +40,7 @@ class UserAnswerController extends Controller
             ]
         );
 
-        return view('user_answer.show', compact('question', 'question_numbers', 'answers', 'quiz_duration', 'is_last_question'));
+        return view('user_answer.show', compact('question', 'question_numbers', 'answers', 'quiz_duration', 'is_last_question','file_question'));
     }
 
     public function store(Request $request, $question_id)
