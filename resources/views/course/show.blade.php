@@ -5,15 +5,20 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="profile-back">
-                @if($file && $file->file_path)
-                    <img src="{{ asset($file->file_path) }}" alt="">
+                @if($file->isNotEmpty())
+                    @foreach($file as $fileItem)
+                        @if($fileItem->file_path)
+                            <img src="{{ asset($fileItem->file_path) }}" alt="">
+                            @break <!-- Stop after the first file with file_path -->
+                        @endif
+                    @endforeach
                 @else
                     <img src="{{ asset('images/profile1.jpg') }}" alt="">
                 @endif
                 <form method="POST" action="{{ route('enroll.store', $course->id) }}">
                     @csrf
                     <div class="social-btn">
-                        <a href="javascript:void(0);" class="btn btn-light social">3 Students</a>
+                        <a href="#" class="btn btn-light social">{{ $total_students }} Students</a>
                         <button type="submit" class="btn btn-primary">Take Course</button>
                     </div>
                 </form>
@@ -74,7 +79,7 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $quiz->name }}</td>
-                                            <td class="wspace-no">2 students</td>
+                                            <td class="wspace-no">{{ $quiz_students_count[$quiz->id] }} Students</td>
                                             <td>{{ $quiz->created_at }}</td>
                                             <td>
                                                 <div class="action-buttons d-flex">
