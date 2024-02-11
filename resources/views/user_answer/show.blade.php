@@ -18,9 +18,15 @@
         <div class="row">
             <div class="row justify-content-center h-100 align-items-center">
                 <div class="col-xl-6 ">
-                    <div class="card ">
-                        <img class="card-img-top rounded" src="{{ asset('/images/card/2.png') }}" alt="Card image cap">
-                    </div>
+                    @if($file_question)
+                        <div class="card">
+                            <img class="card-img-top rounded" src="{{ asset($file_question->file_path) }}" alt="Card image cap">
+                        </div>
+                    @else
+                        <div class="card">
+                            <img class="card-img-top rounded" src="{{ asset('/images/card/2.png') }}" alt="Card image cap">
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="row">
