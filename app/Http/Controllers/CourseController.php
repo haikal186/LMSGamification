@@ -62,6 +62,7 @@ class CourseController extends Controller{
         $course = Course::findOrFail($course_id);
         $quizzes = $course->quizzes;
         $file = $course->file;
+
         $assignments = $course->assignments;
         $total_students = $course->enrolls->count();
 
@@ -125,7 +126,9 @@ class CourseController extends Controller{
             $extension = $file->getClientOriginalExtension();
             $storedFileName = $fileName . '_' . time() . '.' . $extension;
 
-           if ($course->file->count() > 0) {
+            $file->storeAs('public/uploads', $storedFileName);
+
+            if ($course->file->count() > 0) {
                 $fileToDelete = $course->file->first(); 
                 Storage::delete('public/uploads/' . $fileToDelete->name);
                 $fileToDelete->delete();
@@ -133,9 +136,9 @@ class CourseController extends Controller{
 
             $course->file()->create([
                 'original_name' => $originalName,
-                'name' => $storedFileName,
-                'file_path' => 'http://127.0.0.1:8000/storage/uploads/' . $storedFileName,
-                'file_type' => $file->getClientMimeType(),
+                'name'          => $storedFileName,
+                'file_path'     => 'http://127.0.0.1:8000/storage/uploads/' . $storedFileName,
+                'file_type'     => $file->getClientMimeType(),
             ]);
         }
 
