@@ -5,10 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollController;
-use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -58,6 +59,11 @@ Route::middleware(['isAuthenticated'])->group(function () {
         Route::delete('/destroy/{user_id}','destroy')->name('student.destroy');
 
     });
+
+    Route::prefix('profile')->controller(ProfileController::class)->group(function () {
+        
+    });
+
     
     Route::prefix('course')->controller(CourseController::class)->group(function(){
         Route::get('/', 'index')->name('course.index');
