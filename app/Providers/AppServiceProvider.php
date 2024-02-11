@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
             'course' => 'App\Models\Course',
             'quiz' => 'App\Models\Quiz',
             'question' => 'App\Models\Question',
+            'user' => 'App\Models\User',
+
         ]);
     }
 }
