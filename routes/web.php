@@ -71,7 +71,7 @@ Route::middleware(['isAuthenticated'])->group(function () {
     
     Route::prefix('course')->controller(CourseController::class)->group(function(){
         Route::get('/', 'index')->name('course.index');
-        // Route::get('/create', 'create')->name('course.create')->middleware('checkRole:lecturer');
+        Route::post('/search', 'search')->name('course.search');
         Route::get('/create', 'create')->name('course.create');
         Route::post('/store', 'store')->name('course.store');
         Route::get('/show/{course_id}', 'show')->name('course.show');
