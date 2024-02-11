@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <form method="POST" action="{{ route('question.update', $question->id) }}">
+    <form method="POST" action="{{ route('question.update', $question->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
@@ -18,8 +18,8 @@
             <div class="row justify-content-center h-100 align-items-center">
                 <div class="col-xl-6 ">
                     <div class="card ">
-                        @if ($file && $file->file_path)
-                            <img class="card-img-top img-fluid" src="{{ asset($file->file_path) }}" alt="Question Image">
+                        @if ($file_question && $file_question->file_path)
+                            <img class="card-img-top img-fluid" src="{{ asset($file_question->file_path) }}" alt="Question Image">
                         @else
                             <img class="card-img-top img-fluid" src="{{ asset('/images/card/2.png') }}" alt="Card image cap">
                         @endif
@@ -30,11 +30,10 @@
                                     <div class="input-group mb-9">
                                         <span class="input-group-text">Upload</span>
                                         <div class="form-file">
-                                            <input name="file" type="file" class="form-file-input form-control">
+                                            <input type="file" name="file" class="form-file-input form-control">
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn btn-primary me-3 btn-sm float-end">Remove</a>
                             </div> 
                         </div>
                     </div>
