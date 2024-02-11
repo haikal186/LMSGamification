@@ -13,6 +13,7 @@
                 @else
                     <img src="{{ asset('images/profile/pic1.jpg') }}" width="20" alt=""/>
                 @endif
+                {{-- <img src="{{ asset('images/profile/pic1.jpg') }}" width="20" alt=""/> --}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a href="{{ route('profile.show', ['user_id' => auth()->user()->id]) }}" class="dropdown-item ai-icon">
