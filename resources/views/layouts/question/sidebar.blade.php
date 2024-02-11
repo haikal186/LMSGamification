@@ -12,6 +12,5 @@
     @endforeach
     <div class="col-lg-8">
         <a href="{{ route('question.create', $quiz->id) }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Question</a>
-        {{-- <a href="{{ route('course.create') }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Question</a> --}}
     </div>
 </div>
