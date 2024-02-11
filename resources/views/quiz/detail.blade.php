@@ -8,34 +8,31 @@
         </ol>
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <div class="profile card card-body px-3 pt-3 pb-0">
-                <div class="profile-head">
-                    <div class="photo-content">
-                        <div class="cover-photo rounded"></div>
-                    </div>
-                    <div class="profile-info">
-                        <div class="profile-photo">
-                            <img src="{{ asset('images/profile/profile.png') }}" class="img-fluid rounded-circle" alt="">
-                        </div>
-                        <div class="profile-details">
-                            <div class="profile-name px-3 pt-2">
-                                <h4 class="text-primary mb-0">Muhamamad Haikal Bin Abdul Hadi</h4>
-                                <p>Instructors / Quiz Author</p>
-                            </div>
-                            <div class="profile-email px-2 pt-2">
-                                <h4 class="text-muted mb-0">haikal@gmail.com</h4>
-                                <p>Email</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-xl-12">
+            <div class="profile-back">
+                @if ($file_quiz)
+                    <img src="{{ asset($file_quiz->file_path) }}" alt="">
+                @else
+                    <img src="{{ asset('images/profile1.jpg') }}" alt="">
+                @endif
+                <div class="social-btn">
+                    <a href="#" class="btn btn-light social">{{ $total_students }} Students Taken</a>
+                    <a href="{{ route('user_answer.show', $quiz->questions->first()->id) }}" type="submit" class="btn btn-primary">Start</a>
+                </div>
+            </div>
+            <div class="profile-pic d-flex">
+                <img src="{{ asset('images/profile/pic1.jpg') }}" alt="">
+                <div class="profile-info2">
+                    <h2 class="mb-0">{{ $quiz->name }}</h2>
+                    <h4>Muhammad Haikal Bin Abdul Hadi</h4>
+                    <span class="d-block">haikal@gmail.com</span>
                 </div>
             </div>
         </div>
         <div class="d-flex align-items-center mb-4">
             <h4 class="fs-20 font-w600 mb-0 me-auto">Quiz Details</h4>
             <div>
-                <a href="{{ route('user_answer.show', $quiz->questions->first()->id) }}" class="btn btn-primary" type="submit">Start</a>
+                {{-- <a href="{{ route('user_answer.show', $quiz->questions->first()->id) }}" class="btn btn-primary" type="submit">Start</a> --}}
             </div>
         </div>
         <div class="card">
@@ -47,7 +44,7 @@
                                 <a class="nav-link active" data-bs-toggle="tab" href="#home1"> Details</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#profile1"> Setting</a>
+                                <a class="nav-link" data-bs-toggle="tab" href="#profile1">Leaderboards</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -88,7 +85,7 @@
                             <div id="profile1" class="tab-pane fade">
                                 <div class="pt-3">
                                     <div class="settings-form">
-                                        <h4 class="text-primary">Quiz Setting</h4>
+                                        <h4 class="text-primary">Quiz Leaderboards</h4>
                                         <form>
                                             <div class="row">
                                                 <div class="mb-3 col-md-6">
