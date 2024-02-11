@@ -24,10 +24,12 @@ class InstructorController extends Controller
 
     public function store(Request $request)
     {
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
+            'role_id' =>'2'
         ]);
 
         return to_route('instructor.index');
