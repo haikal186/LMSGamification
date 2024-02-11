@@ -37,9 +37,8 @@
         <ul aria-expanded="false">
             <li><a href="{{ route('instructor.index') }}">List Instructors</a></li>
             <li><a href="{{ route('student.index') }}">List Students</a></li>
-            <li><a href="{{ route('instructor.show', ['user_id' => auth()->user()->id]) }}">Your Profile</a></li>
+            <li><a href="{{ route('profile.show', ['user_id' => auth()->user()->id]) }}">Your Profile</a></li>
         </ul>
-
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
             <i class="flaticon-093-waving"></i>
