@@ -66,7 +66,11 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="profile-head">
-                                        <img src="images/profile/1.jpg" class="card-img-top img-fluid">
+                                        @if ($quiz->file)
+                                            <img src="{{ $quiz->file->file_path }}" class="card-img-top img-fluid">
+                                        @else
+                                            <img src="images/profile/1.jpg" class="card-img-top img-fluid">
+                                        @endif
                                     </div>
                                     <div class="modal-header">
                                         <div class="profile-photo">
