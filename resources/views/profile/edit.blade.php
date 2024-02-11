@@ -8,7 +8,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('profile.update', $user->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
