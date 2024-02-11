@@ -39,9 +39,9 @@
             <span class="nav-text">Profile</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{ route('profile.index') }}">List Instructors</a></li>
+            <li><a href="{{ route('instructor.index') }}">List Instructors</a></li>
             <li><a href="{{ route('student.index') }}">List Students</a></li>
-            <li><a href="{{ route('profile.show', ['user_id' => auth()->user()->id]) }}">Your Profile</a></li>
+            <li><a href="{{ route('instructor.show', ['user_id' => auth()->user()->id]) }}">Your Profile</a></li>
         </ul>
 
     </li>
