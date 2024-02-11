@@ -20,6 +20,32 @@ class CourseController extends Controller{
 
     }
 
+    public function search(Request $request)
+    {   
+        $search = $request->search;
+        $filter = $request->course_name;
+
+        $courses = Course::query();
+        if ($search) {
+            $courses->where('name', 'LIKE', '%' . $search . '%');
+        }
+
+        if ($filter) {
+            $courses->where('name', $filter);
+        }
+
+        $courses = $courses->get();
+
+        if ($courses->isEmpty()) {
+
+            $courses = Course::all();
+        }
+
+        $totalCourse = $courses->count();
+
+        return view('course.index', compact('courses', 'totalCourse'));
+    }
+
     public function create()
     {  
         return view('course.create');
@@ -61,7 +87,7 @@ class CourseController extends Controller{
     {
         $course = Course::findOrFail($course_id);
         $quizzes = $course->quizzes;
-        $file = $course->file;
+        $file_course = $course->file;
 
         $assignments = $course->assignments;
         $total_students = $course->enrolls->count();
@@ -72,7 +98,7 @@ class CourseController extends Controller{
             $quiz_students_count[$quiz->id] = $quiz->scores()->groupBy('user_id')->count();
         }
         
-        return view('course.show', compact('course', 'quizzes','assignments','file','total_students','quiz_students_count'));
+        return view('course.show', compact('course', 'quizzes','assignments','file_course','total_students','quiz_students_count'));
     }
 
     public function storeFile(Request $request, $course_id)
@@ -104,9 +130,9 @@ class CourseController extends Controller{
     public function edit(string $id)
     {
         $course = Course::findOrFail($id);
-        $file   = $course->file;
+        $file_course   = $course->file;
 
-        return view('course.edit',compact('course','file'));
+        return view('course.edit',compact('course','file_course'));
     }
     
     public function update(Request $request, $course_id)
