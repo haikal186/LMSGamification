@@ -64,7 +64,7 @@ Route::middleware(['isAuthenticated'])->group(function () {
 
         Route::get('/show/{user_id}', 'show')->name('profile.show');
         Route::get('/edit/{user_id}','edit')->name('profile.edit');
-
+        Route::put('/update/{user_id}','update')->name('profile.update');
 
     });
 
