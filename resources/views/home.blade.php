@@ -29,7 +29,7 @@
                         </span>
                         <div class="media-body">
                             <p class="mb-1">Total Course Taken</p>
-                            <h4 class="mb-0">1</h4>
+                            <h4 class="mb-0">{{ $total_course }}</h4>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         </span>
                         <div class="media-body">
                             <p class="mb-1">Total Quiz Taken</p>
-                            <h4 class="mb-0">0</h4>
+                            <h4 class="mb-0">{{ $total_quiz }}</h4>
                         </div>
                     </div>
                 </div>
