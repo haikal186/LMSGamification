@@ -23,6 +23,10 @@
                             <label  class="form-label font-w600">Password<span class="text-danger scale5 ms-2">*</span></label>
                             <input type="text" name="password" class="form-control solid" placeholder="password" aria-label="name">
                         </div>
+                        <div class="col-xl-6  col-md-6 mb-4">
+                            <label  class="form-label font-w600">Roles<span class="text-danger scale5 ms-2">*</span></label>
+                            <input type="text" name="role" value="Instructor" class="form-control solid" placeholder="Student" aria-label="name" disabled>
+                        </div>
                     </div>
                     <div class="card-footer text-end">
                         <div>
