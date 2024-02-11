@@ -23,21 +23,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($users as $key => $user) --}}
+                        @foreach ($users as $key => $user)
                         <tr>
-                            <td>1</td>
-                            <td>Student</td>                            
-                            <td>Hariz Wildan Bin Fauzi</td>
-                            <td>wildan@gmail.com</td>
-                            <td></td>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ ucfirst($user->hasRole->name) }}</td>                            
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->created_at }}</td>
                             <td>
                                 <div class="action-buttons d-flex">
-                                    <a href="javascript:void(0);" class="btn btn-success light mr-2">
+                                    <a href="{{ route('instructor.show', $user->id) }}" class="btn btn-success light mr-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
                                     </a>       
-                                    <a href="#" class="btn btn-secondary light mr-2">  
-                                    {{-- <a href="{{ route('profile.store', $user->id) }}" class="btn btn-secondary light mr-2"> --}}
-
+                                    <a href="{{ route('instructor.edit', $user->id) }}" class="btn btn-secondary light mr-2">  
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <rect x="0" y="0" width="24" height="24"></rect>
@@ -46,8 +44,7 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    
-                                    <form action="#" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                    <form action="{{ route('instructor.destroy', $user->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger light">
@@ -61,11 +58,9 @@
                                         </button>
                                     </form>                                  
                                 </div>      
-                                    </a>
-
                             </td>
                         </tr>
-                        {{-- @endforeach --}}
+                    @endforeach
                     </tbody>
                 </table>
             </div>
