@@ -21,6 +21,8 @@ class UserSeeder extends Seeder
                 'email'    => 'haikal@gmail.com',
                 'password' => Hash::make('password'),
                 'role_id'  => 1,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ],
             [
                 'id'       => 2,
@@ -28,6 +30,8 @@ class UserSeeder extends Seeder
                 'email'    => 'azhar@gmail.com',
                 'password' => Hash::make('password'),
                 'role_id'  => 2,
+                'created_at'  => now(),
+                'updated_at'  => now(),
             ]
         ]);
     }
