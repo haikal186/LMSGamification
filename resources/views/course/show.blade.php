@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="profile-back">
-                @if($file->isNotEmpty())
-                    @foreach($file as $fileItem)
+                @if($file_course->isNotEmpty())
+                    @foreach($file_course as $fileItem)
                         @if($fileItem->file_path)
                             <img src="{{ asset($fileItem->file_path) }}" alt="">
                             @break <!-- Stop after the first file with file_path -->
