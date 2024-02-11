@@ -29,15 +29,14 @@
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
-                    <form method="POST" action="{{ route('quiz.update',  $quiz->id) }}">
+                    <form method="POST" action="{{ route('quiz.update',  $quiz->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xl-8  col-md-6 mb-4">
+                            <div class="col-xl-6  col-md-6 mb-4">
                                 <label  class="form-label font-w600">Quiz Name<span class="text-danger scale5 ms-2">*</span></label>
                                 <input type="text" class="form-control solid" value="{{ $quiz->name }}" name="name" placeholder="Quiz name..." aria-label="name">
-                                {{-- <input type="text" class="form-control solid js-example-disabled" placeholder="Name" aria-label="name"> --}}
                             </div>
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label  class="form-label font-w600">Quiz Difficulty<span class="text-danger scale5 ms-2">*</span></label>
@@ -56,11 +55,11 @@
                                 </div>
                             </div>
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label  class="form-label font-w600">Image<span class="text-danger scale5 ms-2">*</span></label>
+                                <label  class="form-label font-w600">Upload Image<span class="text-danger scale5 ms-2">*</span></label>
                                 <div class="input-group mb-9">
                                     <span class="input-group-text">Upload</span>
                                     <div class="form-file">
-                                    <input type="file" class="form-file-input form-control">
+                                        <input type="file" name="file" class="form-file-input form-control">
                                     </div>
                                 </div>
                             </div>
