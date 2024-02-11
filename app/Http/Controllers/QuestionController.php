@@ -16,7 +16,9 @@ class QuestionController extends Controller
     {  
         $quiz = Quiz::findOrFail($quiz_id);
         $questions = $quiz->questions;
-        return view('question.create', compact('quiz','questions'));
+        $user = Auth()->user();
+        $file = $user->files;
+        return view('question.create', compact('quiz','questions','file'));
     }
 
     public function store(Request $request, $quiz_id)
@@ -70,11 +72,13 @@ class QuestionController extends Controller
         $question_find = Question::findOrFail($question_id);
         $quiz = $question_find->quiz;
         $question = Question::findOrFail($question_id);
-        $file = $question->file;
+        $file_question = $question->file;
         $questions = $quiz->questions;
-    
 
-        return view('question.show', compact('questions','question_find','quiz','question','file'));
+        //user profile
+        $file = $user->files;
+        
+        return view('question.show', compact('questions','question_find','quiz','question','file_question','file'));
 
     }
     
