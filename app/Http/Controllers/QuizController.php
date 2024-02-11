@@ -103,6 +103,31 @@ class QuizController extends Controller
             'quiz_duration' => $request->quiz_duration,
         ]);
 
+        if ($request->hasFile('file')) {
+
+            if ($quiz->file()->exists()) {
+                $existingFile = $quiz->file()->first();
+                Storage::delete('public/uploads/' . $existingFile->name);
+                $existingFile->delete();
+            }
+    
+            // Store new file
+            $file = $request->file('file');
+            $originalName = $file->getClientOriginalName();
+            $fileName = pathinfo($originalName, PATHINFO_FILENAME);
+            $extension = $file->getClientOriginalExtension();
+            $storedFileName = $fileName . '_' . time() . '.' . $extension;
+    
+            $file->storeAs('public/uploads', $storedFileName);
+    
+            $quiz->file()->create([
+                'original_name' => $originalName,
+                'name' => $storedFileName,
+                'file_path' => 'http://127.0.0.1:8000/storage/uploads/' . $storedFileName,
+                'file_type' => $file->getClientMimeType(),
+            ]);
+        }
+
         $quiz_id = $quiz->id;
         return redirect()->route('quiz.show', ['quiz_id' => $quiz_id]);
     }
@@ -110,8 +135,10 @@ class QuizController extends Controller
     public function detail(Request $request,$quiz_id)
     {
         $quiz = Quiz::findOrFail($quiz_id); 
+        $file_quiz = $quiz->file;
+        $total_students = $quiz->scores()->distinct('user_id')->count();
 
-        return view('quiz.detail',compact('quiz'));
+        return view('quiz.detail',compact('quiz','file_quiz','total_students'));
     }
 
 }
