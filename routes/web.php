@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\AssignmentController;
@@ -37,19 +37,25 @@ Route::middleware(['isAuthenticated'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    Route::prefix('profile')->controller(ProfileController::class)->group(function () {
-        Route::get('/', 'index')->name('profile.index');
-        Route::get('/create', 'create')->name('profile.create');
-        Route::post('/store', 'store')->name('profile.store');
-        Route::get('/edit/{user_id}','edit')->name('profile.edit');
-        Route::put('/update/{user_id}','update')->name('profile.update');
-        Route::delete('/destroy/{user_id}','destroy')->name('profile.destroy');
-        Route::get('/show/{user_id}', 'show')->name('profile.show');
+    Route::prefix('instructor')->controller(InstructorController::class)->group(function () {
+        Route::get('/', 'index')->name('instructor.index');
+        Route::get('/create', 'create')->name('instructor.create');
+        Route::post('/store', 'store')->name('instructor.store');
+        Route::get('/edit/{user_id}','edit')->name('instructor.edit');
+        Route::put('/update/{user_id}','update')->name('instructor.update');
+        Route::delete('/destroy/{user_id}','destroy')->name('instructor.destroy');
+        Route::get('/show/{user_id}', 'show')->name('instructor.show');
     });
 
     Route::prefix('student')->controller(StudentController::class)->group(function () {
 
         Route::get('/', 'index')->name('student.index');
+        Route::get('/show/{user_id}', 'show')->name('student.show');
+        Route::get('/edit/{user_id}','edit')->name('student.edit');
+        Route::put('/update/{user_id}','update')->name('student.update');
+        Route::get('/create', 'create')->name('student.create');
+        Route::post('/store', 'store')->name('student.store');
+        Route::delete('/destroy/{user_id}','destroy')->name('student.destroy');
 
     });
     
