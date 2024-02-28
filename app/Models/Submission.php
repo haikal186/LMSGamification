@@ -20,4 +20,14 @@ class Submission extends Model
     {
         return $this->belongsTo(Assignment::class,'assignment_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function files()
+    {
+        return $this->morphOne(File::class, 'fileable');
+    }
 }
