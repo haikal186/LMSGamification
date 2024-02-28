@@ -55,7 +55,7 @@
                                         <span class="text-primary mb-3 d-block">{{ $quiz->course->name }}</span>
                                     </div>
                                     <div>
-                                        <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Total Played : 57 Students </span>
+                                        <span class="d-block mb-1"><i class="fas fa-map-marker-alt me-2"></i>Total Played : {{ $quiz->total_students }} Students </span>
                                         <span><i class="fas fa-comments-dollar me-2"></i>Total Question : {{ $quiz->questions->count() }} Qs</span>
                                     </div>
                                 </div>
@@ -73,9 +73,6 @@
                                         @endif
                                     </div>
                                     <div class="modal-header">
-                                        <div class="profile-photo">
-                                            <img alt="image" width="35" src="images/avatar/1.jpg" class="img-fluid rounded-circle">{{ Auth()->user()->name }}
-                                        </div>
                                         <div>
                                             <h5 class="card-title">{{ $quiz->name }}</h5>
                                         </div>
