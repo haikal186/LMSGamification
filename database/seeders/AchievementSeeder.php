@@ -25,10 +25,6 @@ class AchievementSeeder extends Seeder
             ],
             [
                 'id'   => 3,
-                'name' => 'Completion of Difficult Levels',
-            ],
-            [
-                'id'   => 4,
                 'name' => 'Fast Completion Time',
             ],
         ]);
