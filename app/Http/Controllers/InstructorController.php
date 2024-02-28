@@ -87,6 +87,12 @@ class InstructorController extends Controller
     public function destroy(Request $request, $user_id)
     {
         $user = User::findOrFail($user_id);
+
+        if ($user->file) {
+            Storage::delete($user->file->file_path);
+        }
+
+        // Delete user record
         $user->delete();
         
         return redirect()->route('instructor.index')->with('success', 'User deleted successfully');
@@ -95,9 +101,9 @@ class InstructorController extends Controller
     public function show($user_id)
     {
         $user = User::findOrFail($user_id);
-        $file = $user->files;
+        $file_instructor = $user->files;
+        $role_instructor = $user->hasRole->name;
 
-        $role = $user->hasRole;
-        return view('instructor.show', compact('user','role','file'));
+        return view('instructor.show', compact('user','role_instructor','file_instructor'));
     }
 }
