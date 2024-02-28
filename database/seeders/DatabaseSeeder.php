@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
             QuestionSeeder::class,
             AnswerSeeder::class,
             AchievementSeeder::class,
+            AssignmentSeeder::class,
+            FileSeeder::class,
 
         ]);
     }
