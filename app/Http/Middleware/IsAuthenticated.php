@@ -17,7 +17,7 @@ class IsAuthenticated
         {
             $user = Auth::user();
             $name_parts = explode(' ', $user->name);
-
+            
             if (Arr::get($name_parts, 1) !== null) {
                 $short_name = $name_parts[1] . ' ' . end($name_parts);
             } else {
