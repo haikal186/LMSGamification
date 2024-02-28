@@ -21,10 +21,10 @@ class StudentController extends Controller
     public function show($user_id)
     {
         $user = User::findOrFail($user_id);
-        $file = $user->files;
+        $file_student = $user->files;
 
-        $role = $user->hasRole;
-        return view('student.show', compact('user','role','file'));
+        $role_student = $user->hasRole->name;
+        return view('student.show', compact('user','role_student','file_student'));
     }
 
     public function edit(Request $request, $user_id)
