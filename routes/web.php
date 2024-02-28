@@ -128,8 +128,8 @@ Route::middleware(['isAuthenticated'])->group(function () {
         Route::post('/store/{course_id}', 'store')->name('enroll.store');
         Route::get('/show/{course_id}', 'show')->name('enroll.show');
         Route::get('/quiz/{course_id}', 'show')->name('enroll.quiz');
+        Route::post('/storeFile/{assignment_id}', 'storeFile')->name('enroll.storeFile');
 
-    
     });
 
     Route::prefix('achievement')->controller(AchievementController::class)->group(function () {
