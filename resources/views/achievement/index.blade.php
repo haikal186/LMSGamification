@@ -7,12 +7,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" data-bs-toggle="tab" href="#AllStatus">Achievement Status</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-bs-toggle="tab" href="#Pending">Complete</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-bs-toggle="tab" href="#On-Hold">In progress</a>
-                </li>
             </ul>
         </div>
     </div>
