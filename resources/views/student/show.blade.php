@@ -8,8 +8,8 @@
                     <div class="card-header border-0 flex-wrap align-items-start">
                         <div class="col-md-8">
                             <div class="user d-sm-flex d-block pe-md-5 pe-0">
-                                @if($file)
-                                    <img src="{{ asset($file->file_path) }}" alt="">
+                                @if($file_student)
+                                    <img src="{{ asset($file_student->file_path) }}" alt="">
                                 @else
                                     <img src="{{ asset('images/user.jpg') }}" alt="">
                                 @endif
@@ -17,7 +17,7 @@
                                     <h5 class="mb-1 font-w600">{{ $user->name }}</h5>
                                     <div class="listline-wrapper mb-2">
                                         <span class="item"><i class="far fa-envelope"></i>{{ $user->email }}</span>
-                                        <span class="item"><i class="far fa-id-badge"></i>{{ $user->hasRole->name }}</span>
+                                        <span class="item"><i class="far fa-id-badge"></i>{{ ucfirst($role_student) }}</span>
                                         <span class="item"><i class="fas fa-map-marker-alt"></i>Malaysia</span>
                                     </div>
                                     <p>A data analyst collects, interprets and visualizes data to uncover insights. A data analyst assigns a numerical value to business functions so performance.</p>
@@ -31,7 +31,7 @@
                             <div class="col-xl-6 col-md-6">
                                 <p class="font-w600 mb-2 d-flex"><span class="custom-label-2">Full Name : </span><span class="font-w400">{{ $user->name }}</span></p>
                                 <p class="font-w600 mb-2 d-flex"><span class="custom-label-2">Email : </span><span class="font-w400">{{ $user->email }}</span></p>
-                                <p class="font-w600 mb-2 d-flex"><span class="custom-label-2">Role : </span><span class="font-w400">{{ $user->hasRole->name }}</span></p>
+                                <p class="font-w600 mb-2 d-flex"><span class="custom-label-2">Role : </span><span class="font-w400">{{ ucfirst($role_student) }}</span></p>
                                 <p class="font-w600 mb-2 d-flex"><span class="custom-label-2">Register Date : </span><span class="font-w400"> {{ $user->created_at }}</span></p>
                                 <p class="font-w600 mb-2 d-flex"><span class="custom-label-2">Last Update : </span><span class="font-w400">{{ $user->updated_at }}</span></p>
                             </div>
