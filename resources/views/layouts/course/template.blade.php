@@ -569,7 +569,7 @@
         ***********************************-->
         <div class="header">
             <div class="header-content">
-                @include('layouts.navbar')
+                @include('layouts.course.navbar')
 			</div>
 		</div>
         <!--**********************************
