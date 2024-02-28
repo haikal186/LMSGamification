@@ -26,28 +26,30 @@
             <h4 class="fs-20 font-w600 mb-0 me-auto">Achievements</h4>
         </div>
         @foreach($achievements as $achievement)
-    <div class="col-xl-4 col-lg-6 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="new-arrival-product">
-                    <div class="new-arrivals-img-contnent">
-                        <img class="img-fluid" src="{{ asset('images/product/1.jpg') }}" alt="">
-                    </div>
-                    <div class="new-arrival-content text-center mt-3">
-                        <div class="mt-4">
-                            <h4>{{ $achievement->name }}</h4>
-                            @if (in_array($achievement->id, $user_achievement_ids))
-                                <div>Completed</div>
+            <div class="col-xl-4 col-lg-6 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="new-arrival-product">
+                            @if($achievement->files)
+                                <img class="img-fluid" src="{{ asset($achievement->files->file_path) }}" alt="">
                             @else
-                                <div>Not Completed</div>
+                                <img class="img-fluid" src="{{ asset('images/default-image.jpg') }}" alt="">
                             @endif
+                            <div class="new-arrival-content text-center mt-3">
+                                <div class="mt-4">
+                                    <h4>{{ $achievement->name }}</h4>
+                                    @if (in_array($achievement->id, $user_achievement_ids))
+                                        <div>Completed</div>
+                                    @else
+                                        <div>Not Completed</div>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-@endforeach
+        @endforeach
     </div>
 </div>
 <script src="{!! asset('vendor/jquery-nice-select/js/jquery.nice-select.min.js') !!}"></script>
