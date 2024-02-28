@@ -32,9 +32,11 @@
                 </div>
                 <div class="d-flex mb-4">
                     <div class="d-flex align-items-center mb-4 flex-wrap">
-                        <div>
-                            <a href="{{ route('course.create') }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Course</a>        
-                        </div>
+                        @if($role == 'lecturer')
+                            <div>
+                                <a href="{{ route('course.create') }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add New Course</a>        
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
