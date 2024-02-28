@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage;
-
 use App\Models\File;
+use App\Models\Quiz;
+use App\Models\Score;
+
+use App\Models\Answer;
 use App\Models\Course;
 use App\Models\Enroll;
-use App\Models\Answer;
-use App\Models\Quiz;
 use App\Models\Question;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 
 class QuizController extends Controller
@@ -22,6 +23,7 @@ class QuizController extends Controller
         
         $quizzes->each(function ($quiz) {
             $quiz->question_count = $quiz->questions()->count();
+            $quiz->total_students = $quiz->scores()->distinct('user_id')->count();
         });
 
         $totalQuiz = $quizzes->count();
@@ -134,11 +136,34 @@ class QuizController extends Controller
 
     public function detail(Request $request,$quiz_id)
     {
-        $quiz = Quiz::findOrFail($quiz_id); 
-        $file_quiz = $quiz->file;
+        $user_scores    = [];
+        $count          = 1;
+        $quiz           = Quiz::findOrFail($quiz_id);
+        $file_quiz      = $quiz->file;
         $total_students = $quiz->scores()->distinct('user_id')->count();
 
-        return view('quiz.detail',compact('quiz','file_quiz','total_students'));
+        //for leaderboards
+        $scores = Score::where('quiz_id', $quiz_id)->latest('score')->get();
+
+        foreach ($scores as $score) {
+            // Check if the user ID has not been encountered before in $user_scores
+            $userExists = false;
+            foreach ($user_scores as $user_score) {
+                if ($user_score['user']['id'] === $score->user->id) {
+                    $userExists = true;
+                    break;
+                }
+            }
+        
+            if (!$userExists) {
+                $user_scores[] = [
+                    'score' => $score->toArray(),
+                    'user' => $score->user->toArray(),
+                ];
+            }
+        }
+
+        return view('quiz.detail',compact('quiz','file_quiz','total_students','scores', 'user_scores', 'count'));
     }
 
 }
