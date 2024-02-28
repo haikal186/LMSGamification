@@ -15,7 +15,7 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- PAGE TITLE HERE -->
-	<title>Jobick Job Admin</title>
+	<title>EduGamify</title>
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -60,7 +60,7 @@
                                             @enderror
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign Me In
+                                            <button type="submit" class="btn btn-primary btn-block">
                                                 {{ __('Login') }}
                                             </button>
                                         </div>
