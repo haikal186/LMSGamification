@@ -6,7 +6,7 @@
         </div>
         @foreach ($question_numbers as $key => $question_number)
         <div class="col-md-12">
-            <a href="{{ route('user_answer.show', $question_number->id) }}" class="text-decoration-none">
+            <a href="#" class="text-decoration-none">
                 <div class="card text-center">
                     <div class="card-body mt-4">
                         <h5 class="card-text">Question {{ $key + 1 }}</h5>
