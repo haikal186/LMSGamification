@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use App\Models\Course;
 use App\Models\Assignment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class AssignmentController extends Controller
 {
@@ -32,9 +34,11 @@ class AssignmentController extends Controller
 
     public function show(Request $request, $assignment_id)
     {
-        $assignment = Assignment::findOrFail($assignment_id);
-
-        return view('assignment.show', compact('assignment'));
+        $assignments = Assignment::findOrFail($assignment_id);
+        $submissions = $assignments->submissions;
+        $deadline = $assignments->deadline;
+        
+        return view('assignment.show', compact('assignments','submissions','deadline'));
     }
 
     public function edit(Request $request, $assignment_id)
