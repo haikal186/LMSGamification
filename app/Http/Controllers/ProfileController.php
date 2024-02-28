@@ -26,7 +26,10 @@ class ProfileController extends Controller
     public function update(Request $request, $user_id)
     {
         $user = User::findorFail($user_id);
-
+        $users = User::whereHas('hasRole', function ($query) {
+            $query->where('name', 'lecturer');
+        })->get();
+        
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -42,6 +45,7 @@ class ProfileController extends Controller
                 $existingFile->delete();
             }
     
+            // Store new file
             $file = $request->file('file');
             $originalName = $file->getClientOriginalName();
             $fileName = pathinfo($originalName, PATHINFO_FILENAME);
