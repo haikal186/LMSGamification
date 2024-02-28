@@ -91,6 +91,7 @@ class CourseController extends Controller{
 
         $assignments = $course->assignments;
         $total_students = $course->enrolls->count();
+        
 
         $quiz_students_count = [];
         foreach ($quizzes as $quiz) {
@@ -131,8 +132,9 @@ class CourseController extends Controller{
     {
         $course = Course::findOrFail($id);
         $file_course   = $course->file;
+        $count = 0;
 
-        return view('course.edit',compact('course','file_course'));
+        return view('course.edit',compact('course','file_course','count'));
     }
     
     public function update(Request $request, $course_id)
