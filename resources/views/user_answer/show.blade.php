@@ -47,10 +47,10 @@
             @foreach ($answers as $key => $answer)
             <div class="col-xl-6">
                 <div class="card text">
-                    <div class="card-body mb-0">
-                        <p class="card-text"><b>{{ $key+1 }}.</b> {{ $answer->name }}</p>
-                        <label class="checkbox-inline me-3">
-                            <input type="checkbox" name="answer" value="{{ $answer->id }}">
+                    <div class="card-body mb-0 d-flex align-items-center"> 
+                        <p class="card-text mb-0"><b>{{ $key+1 }}.</b> {{ $answer->name }}</p> 
+                        <label class="radio-inline mb-0 ms-auto"> <!-- Changed class to ms-auto -->
+                            <input type="radio" name="answer" value="{{ $answer->id }}"> <!-- Changed type to radio -->
                         </label>
                     </div>
                 </div>
