@@ -86,8 +86,8 @@
                     </div>
                     <div class="card-footer text-end">
                         <div>
-                            <a href="javascript:void(0);" class="btn btn-primary me-3">Back</a>
-                            <a href="javascript:void(0);" class="btn btn-secondary">Update</a>
+                            <a href="{{ route('assignment.show', $assignment->id) }}" class="btn btn-primary me-3">Back</a>
+                            <button type="submit" class="btn btn-secondary">Update</button>
                         </div>
                     </div>
                 </form>
