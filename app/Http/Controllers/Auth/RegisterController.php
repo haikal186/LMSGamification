@@ -37,6 +37,8 @@ class RegisterController extends Controller
             'role_id' => 1,
             'password' => Hash::make($data['password']),
         ]);
+
+        return $user;
     }
     
     public function store()
