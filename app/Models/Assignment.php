@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Course;
+use App\Models\Assignment;
 use App\Models\Submission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,7 +28,11 @@ class Assignment extends Model
 
     public function submissions()
     {
-        return $this->hasMany(Assignment::class);
-
+        return $this->hasMany(Submission::class);
+    }
+    
+    public function files()
+    {
+        return $this->morphOne(File::class, 'fileable');
     }
 }
