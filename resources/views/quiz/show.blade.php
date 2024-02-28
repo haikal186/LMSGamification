@@ -89,15 +89,15 @@
     <div class="d-flex align-items-center mb-4">
         <h4 class="fs-20 font-w600 mb-0 me-auto">Question Preview</h4>
         <div>
-            <a href="{{ route('question.create', $quiz->id) }}" class="btn btn-primary me-3 btn-sm"><i class="fas fa-plus me-2"></i>Add Question</a>
+            <a href="{{ route('question.create', $quiz->id) }}" class="btn btn-primary me-3 btn-sm" disabled><i class="fas fa-plus me-2"></i>Add Question</a>
         </div>
     </div>
     <div class="row">
-        @foreach($questions as $question)
+        @foreach($questions as $key => $question)
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Question {{ $question->id }}</h5>
+                        <h5 class="card-title">Question {{ $key + 1 }}</h5>
                     </div>
                     <div class="card-body">
                         <div class="mb-6">
