@@ -13,7 +13,6 @@
                 </div>
                 <i class="fas fa-chevron-down"></i>
             </div>
-            
         </div>
     </a>
     <div class="dropdown-menu dropdown-menu-end">
@@ -39,8 +38,10 @@
             <span class="nav-text">Profile</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{ route('instructor.index') }}">List Instructors</a></li>
-            <li><a href="{{ route('student.index') }}">List Students</a></li>
+            @if($role == 'lecturer')
+                <li><a href="{{ route('instructor.index') }}">List Instructors</a></li>
+                <li><a href="{{ route('student.index') }}">List Students</a></li>
+            @endif
             <li><a href="{{ route('profile.show', ['user_id' => auth()->user()->id]) }}">Your Profile</a></li>
         </ul>
     </li>
@@ -49,10 +50,10 @@
             <span class="nav-text">Course</span>
         </a>
         <ul aria-expanded="false">
-            {{-- @if($role == 'lecturer') --}}
             <li><a href="{{ route('course.index') }}">Course Lists</a></li>
-            <li><a href="{{ route('course.create') }}">Create Course</a></li>
-            {{-- @endif --}}
+            @if($role == 'lecturer')
+                <li><a href="{{ route('course.create') }}">Create Course</a></li>
+            @endif
             <li><a href="{{ route('enroll.index') }}">Your Course</a></li>
         </ul>
     </li>
@@ -62,7 +63,6 @@
         </a>
         <ul aria-expanded="false">
             <li><a href="{{ route('quiz.index') }}">Quiz List</a></li>
-            <li><a href="#">Assignment</a></li>
         </ul>
     </li>
     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
