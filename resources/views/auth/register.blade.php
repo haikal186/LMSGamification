@@ -15,7 +15,7 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- PAGE TITLE HERE -->
-	<title>Jobick Job Admin</title>
+	<title>EduGamify</title>
 	
 	<!-- FAVICONS ICON -->
 	<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
@@ -33,7 +33,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-										<a href="index.html"><img src="images/logo_lms.png" alt=""></a>
+										<img src="{{ asset('/images/logo_lms.png') }}" alt="">
 									</div>
                                     <h4 class="text-center mb-4">Sign up your account</h4>
                                     <form method="POST" action="{{ route('register') }}">
