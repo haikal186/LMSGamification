@@ -9,7 +9,7 @@
                     @foreach($file_course as $fileItem)
                         @if($fileItem->file_path)
                             <img src="{{ asset($fileItem->file_path) }}" alt="">
-                            @break <!-- Stop after the first file with file_path -->
+                            @break 
                         @endif
                     @endforeach
                 @else
@@ -24,7 +24,6 @@
                 </form>
             </div>
             <div class="profile-pic d-flex">
-                <img src="{{ asset('images/profile/pic1.jpg') }}" alt="">
                 <div class="profile-info2">
                     <h2 class="mb-0">{{ $course->name }}</h2>
                     <h4>Muhammad Haikal Bin Abdul Hadi</h4>
@@ -33,6 +32,7 @@
             </div>
         </div>
     </div>
+    <br>
     <div class="row mt-4">
         <div class="col-xl-12">
             <div class="card mb-4">
@@ -45,15 +45,18 @@
                 <div class="card-footer d-flex flex-wrap justify-content-between">
                     <div class="mb-md-2 mb-3">
                     </div>
-                    <div>
-                        <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning btn-md me-2 mb-2"><i class="fas fa-share-alt me-2"></i>Edit Course</a>
-                        <a href="{{ route('course.delete', $course->id) }}" class="btn btn-primary btn-md me-2 mb-2"><i class="fas fa-download me-2"></i>Delete Course</a>
-                    </div>
+                    @if($role == 'lecturer')
+                        <div>
+                            <a href="{{ route('course.edit', $course->id) }}" class="btn btn-warning btn-md me-2 mb-2">Edit Course</a>
+                            <a href="{{ route('course.delete', $course->id) }}" class="btn btn-primary btn-md me-2 mb-2">Delete Course</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
     <!-- Quiz & Assignment -->
+    @if($role == 'lecturer')
     <div class="row mt-4">
         <div class="col-xl-6">
             <div class="card">
@@ -84,7 +87,7 @@
                                             <td>
                                                 <div class="action-buttons d-flex">
                                                     {{-- <a href="{{ route('quiz.show', ['course_id' => $course->id, 'quiz_id' => $quiz->id]) }}" class="btn btn-success light mr-2"> --}}
-                                                        <a href="{{ route('quiz.show', $course->id) }}" class="btn btn-success light mr-2">
+                                                        <a href="{{ route('quiz.show', $quiz->id) }}" class="btn btn-success light mr-2">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-main-icon" width="24px" height="24px" viewBox="0 0 32 32" x="0px" y="0px"><g data-name="Layer 21"><path d="M29,14.47A15,15,0,0,0,3,14.47a3.07,3.07,0,0,0,0,3.06,15,15,0,0,0,26,0A3.07,3.07,0,0,0,29,14.47ZM16,21a5,5,0,1,1,5-5A5,5,0,0,1,16,21Z" fill="#000000" fill-rule="nonzero"></path><circle cx="16" cy="16" r="3" fill="#000000" fill-rule="nonzero"></circle></g></svg>
                                                     </a>
                                                     <a href="javascript:void(0);" class="btn btn-danger light">
@@ -171,6 +174,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!--  Quiz Modal -->
     <div class="modal fade" id="addQuizModal">
         <div class="modal-dialog modal-dialog-centered" role="document">
