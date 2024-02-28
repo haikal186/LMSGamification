@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
                 'name'     => 'Muhammad Haikal Bin Abdul Hadi',
                 'email'    => 'haikal@gmail.com',
                 'password' => Hash::make('password'),
-                'role_id'  => 1,
+                'role_id'  => 2,
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ],
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'name'     => 'Muhammad Azhar Al-Qardawi',
                 'email'    => 'azhar@gmail.com',
                 'password' => Hash::make('password'),
-                'role_id'  => 2,
+                'role_id'  => 1,
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]
