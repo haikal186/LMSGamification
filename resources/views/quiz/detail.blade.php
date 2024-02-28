@@ -21,7 +21,6 @@
                 </div>
             </div>
             <div class="profile-pic d-flex">
-                <img src="{{ asset('images/profile/pic1.jpg') }}" alt="">
                 <div class="profile-info2">
                     <h2 class="mb-0">{{ $quiz->name }}</h2>
                     <h4>Muhammad Haikal Bin Abdul Hadi</h4>
@@ -29,7 +28,10 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex align-items-center mb-4">
+        <br>
+        <br>
+        <br>
+        <div class="d-flex align-items-center mb-4 mt-4">
             <h4 class="fs-20 font-w600 mb-0 me-auto">Quiz Details</h4>
             <div>
                 {{-- <a href="{{ route('user_answer.show', $quiz->questions->first()->id) }}" class="btn btn-primary" type="submit">Start</a> --}}
@@ -77,7 +79,7 @@
                                         <div class="col-sm-3 col-5">
                                             <h5 class="f-w-500">Total Students Played</h5>
                                         </div>
-                                        <div class="col-sm-9 col-7"><span>: 10</span>
+                                        <div class="col-sm-9 col-7"><span>: {{ $total_students }} Student</span>
                                         </div>
                                     </div>
                                 </div>
@@ -86,42 +88,44 @@
                                 <div class="pt-3">
                                     <div class="settings-form">
                                         <h4 class="text-primary">Quiz Leaderboards</h4>
-                                        <form>
-                                            <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label">Timer</label>
-                                                    <select class="form-control default-select wide" id="inputState">
-                                                        <option selected="">Choose...</option>
-                                                        <option>On (60s each question)</option>
-                                                        <option>Off</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label">Power Ups</label>
-                                                    <select class="form-control default-select wide" id="inputState">
-                                                        <option selected="">Choose...</option>
-                                                        <option>On</option>
-                                                        <option>Off</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="mb-3 col-md-6">
-                                                    <label class="form-label">Background Music</label>
-                                                    <select class="form-control default-select wide" id="inputState">
-                                                        <option selected="">Choose...</option>
-                                                        <option>On</option>
-                                                        <option>Off</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            {{-- <div class="mb-3">
-                                                <div class="form-check custom-checkbox">
-                                                    <input type="checkbox" class="form-check-input" id="gridCheck">
-                                                    <label class="form-check-label form-label" for="gridCheck"> Check me out</label>
-                                                </div>
-                                            </div> --}}
-                                        </form>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="table-responsive">
+                                            <table class="table display mb-4 dataTablesCard job-table table-responsive-xl card-table" id="example5">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Student Name</th>
+                                                        <th>Date Completed</th>
+                                                        <th>Duration</th>
+                                                        <th>Total Scores (%)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($user_scores as $user_score)
+                                                        <tr>
+                                                            <td>{{ $count ++ }}</td>
+                                                            <td>{{ $user_score['user']['name'] }}</td>
+                                                            <td>{{ $user_score['score']['date_completed'] }}</td>
+                                                            <td>{{ number_format($user_score['score']['duration'] / 60, 2) }} Minutes</td>
+                                                            {{-- <td>{{ $user_score['achievement_count']}} Total</td> --}}
+                                                            <td>
+                                                                <h6>Completed
+                                                                    <span class="pull-end">
+                                                                        {{ $user_score['score']['score'] }}%
+                                                                    </span>
+                                                                </h6>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar bg-danger progress-animated" style="width: {{ $user_score['score']['score'] }}%;" role="progressbar">
+                                                                        <span class="sr-only">{{ $user_score['score']['score'] }}% complete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
